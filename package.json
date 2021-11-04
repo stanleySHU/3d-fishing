@@ -1,0 +1,68 @@
+{
+  "name": "fishing-3d",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babylonjs/core": "^4.2.0",
+    "@babylonjs/gui": "^4.2.0",
+    "@babylonjs/loaders": "^4.2.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/axios": "^0.14.0",
+    "@types/is": "^0.0.21",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "is_js": "^0.9.0",
+    "react": "^17.0.2",
+    "react-babylonjs": "^3.0.26",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "GENERATE_SOURCEMAP=false react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "@typescript-eslint/no-unused-vars": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "eqeqeq": "off",
+      "array-callback-return": "off",
+      "import/no-anonymous-default-export": "off",
+      "no-throw-literal": "off",
+      "warn": "off",
+      "react-hooks/rules-of-hooks": "off",
+      "react/jsx-pascal-case": "off",
+      "no-unused-expressions": "off",
+      "@typescript-eslint/no-unused-expressions": [
+        "error"
+      ]
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^2.0.1"
+  }
+}
