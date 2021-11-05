@@ -1,18 +1,23 @@
 import { Mesh, Vector3 } from '@babylonjs/core'
-import { Scene, useAssetManager, useScene } from 'react-babylonjs'
-import { ISceneProps } from './BaseScene'
+import { Scene, useAssetManager, useScene } from 'react-babylonjs';
 import { initialState, reducer } from '../store/GameScene';
-import { Suspense, useEffect, useReducer, useRef, useState } from 'react';
+import React, { Suspense, useEffect, useReducer, useRef, useState } from 'react';
 import '@babylonjs/loaders/glTF';
 import { Fish } from '../components/Fish';
 import { WebsocketService } from '../services/websocket';
 import { GameDataSourceProvider } from '../model/data/GameDataProvider';
+import { ISceneProps } from './BaseScene';
+import { PlayerInfoModel } from '../model/socket/PlayerInfoModel';
+import { useContextSelector } from 'use-context-selector';
+import { AppContext } from '../model/data/AppProvider';
+import { TableUpdateModel } from '../model/socket/TableUpdateModel';
 
-const tasks = [
+type MyGameSceneProps = {
+    user: PlayerInfoModel,
+    tableUpdate: TableUpdateModel
+}
 
-];
-
-export const GameScene = (props: ISceneProps) => {
+const MyScene = React.memo((props: MyGameSceneProps) => {
     const [state, dispath] = useReducer(reducer, initialState);
 
     const websocket = WebsocketService();
@@ -31,7 +36,6 @@ export const GameScene = (props: ISceneProps) => {
 
         }
     }
-
     useEffect(() => {
         const unRegister = websocket.register(agent);
 
@@ -51,10 +55,22 @@ export const GameScene = (props: ISceneProps) => {
                 </standardMaterial>
             </ground>
             <Suspense fallback={null}>
-                <Fish name='' id='cheqiyu' position={new Vector3(-100, 0, 100)} addRotation={new Vector3(1, Math.PI / 2, 1)} />
+                <Fish name='' id='cheqiyu' position={new Vector3(-100, 0, 100)} /*addRotation={new Vector3(1, Math.PI / 2, 1)}*/ />
                 <Fish name='' id='xiaolvyu' position={new Vector3(100, 400, 100)} />
                 <Fish name='' id='xiaohuangyu' position={new Vector3(-100, 300, -100)} />
             </Suspense>
         </GameDataSourceProvider>
     </Scene>
+}, () => true);
+
+type IGameSceneProps = ISceneProps & {
+    actorId?: string
+}
+
+export const GameScene = (props: IGameSceneProps) => {
+    const { actorId } = props;
+    const [ user, tableUpdateMap ] = useContextSelector(AppContext, e => {
+        return [e.user, e.tableUpdateMap];
+    });
+    return <MyScene user={user} tableUpdate={tableUpdateMap[actorId]}></MyScene>
 }

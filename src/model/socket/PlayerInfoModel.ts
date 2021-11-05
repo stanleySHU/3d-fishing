@@ -38,3 +38,11 @@ export interface PlayerInfoModel {
     readonly fppStoreItemInfos: readonly any[];
     readonly userAvatarInfos: readonly number[];
 }
+
+export const CustomUserData = {
+    avatarIndex: 4,
+    nickName: 'Master',
+    currency: 'RMB',
+    cash: '888888.88',
+    gemWallet: '888888.88'
+}

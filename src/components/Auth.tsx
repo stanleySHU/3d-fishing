@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { HttpService } from "../services/http";
 import { WebsocketService } from "../services/websocket";
 import { AuthModel } from "../model/http/AuthModel";
 import { AppContext } from "../model/data/AppProvider";
+import { useContextSelector  } from 'use-context-selector';
 
 export const Auth = (props) => {
   const httpService = HttpService();
-  const { context } = useContext(AppContext);
+  const context = useContextSelector(AppContext, e => e.context);
   const [model, setModel] = useState<AuthModel>(null);
 
   useEffect(() => {

@@ -9,12 +9,12 @@ import { Auth } from './components/Auth';
 function App() {
   return (
     <AppContextProvider>
-      <Auth/>
+      <Auth />
       <Engine antialias adaptToDeviceRatio canvasId='Game' width={960} height={540}>
         <NavController enter="startUp">
-          <StartUpScene id="startUp"/>
-          <LobbyScene id="lobby"/>
-          <GameScene id="game"/>
+          <StartUpScene id="startUp" />
+          <LobbyScene id="lobby" />
+          <GameScene id="game" />
         </NavController>
       </Engine>
     </AppContextProvider>
