@@ -2,7 +2,7 @@ import { Engine } from 'react-babylonjs';
 import { NavController } from './scenes/NavController';
 import { LobbyScene } from './scenes/LobbyScene';
 import { GameScene } from './scenes/GameScene';
-import { StartUpScene } from './scenes/StartUpScene'
+import { StartUpScene } from './scenes/LoadingScene'
 import { AppContextProvider } from './model/data/AppProvider';
 import { Auth } from './components/Auth';
 

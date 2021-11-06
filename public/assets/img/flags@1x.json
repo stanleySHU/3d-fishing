@@ -1,0 +1,100 @@
+{"frames": {
+
+"_7.png":
+{
+	"frame": {"x":1,"y":1,"w":12,"h":12},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":12,"h":12},
+	"sourceSize": {"w":12,"h":12}
+},
+"IDR.png":
+{
+	"frame": {"x":15,"y":1,"w":44,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":44},
+	"sourceSize": {"w":44,"h":44}
+},
+"INR.png":
+{
+	"frame": {"x":61,"y":1,"w":44,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":44},
+	"sourceSize": {"w":44,"h":44}
+},
+"KHR.png":
+{
+	"frame": {"x":107,"y":1,"w":44,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":44},
+	"sourceSize": {"w":44,"h":44}
+},
+"KRW.png":
+{
+	"frame": {"x":153,"y":1,"w":44,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":44},
+	"sourceSize": {"w":44,"h":44}
+},
+"MYR.png":
+{
+	"frame": {"x":199,"y":1,"w":44,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":44},
+	"sourceSize": {"w":44,"h":44}
+},
+"RMB.png":
+{
+	"frame": {"x":1,"y":47,"w":44,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":44},
+	"sourceSize": {"w":44,"h":44}
+},
+"select.png":
+{
+	"frame": {"x":185,"y":47,"w":56,"h":56},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":56},
+	"sourceSize": {"w":56,"h":56}
+},
+"THB.png":
+{
+	"frame": {"x":47,"y":47,"w":44,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":44},
+	"sourceSize": {"w":44,"h":44}
+},
+"USD.png":
+{
+	"frame": {"x":93,"y":47,"w":44,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":44},
+	"sourceSize": {"w":44,"h":44}
+},
+"VND.png":
+{
+	"frame": {"x":139,"y":47,"w":44,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":44},
+	"sourceSize": {"w":44,"h":44}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "flags@1x.png",
+	"format": "BGRA8888",
+	"size": {"w":244,"h":104},
+	"scale": "0.5",
+	"smartupdate": "$TexturePacker:SmartUpdate:787a2b23d4145a7aad2cd912cef02d05:e6e0096ad91026085ebe9291b18bb9d5:227e5c3e1efa64c834660a6a8f6244d7$"
+}
+}

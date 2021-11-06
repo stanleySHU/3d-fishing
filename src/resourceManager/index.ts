@@ -22,34 +22,3 @@ declare global {
         }
     }
 }
-
-export function resolveTask(type: string): Resource {
-    switch(type) {
-        case "taskMesh": {
-            return new MeshResource();
-        }
-        case "taskTextFile": {
-            return new TextFileResource();
-        }
-        case "taskBinaryFile": {
-            break;
-        }
-        case "taskImg": {
-            return new ImageResource();
-        }
-        case "taskTexture": {
-            return new TextureResource();
-        }
-        case "taskCubeTexture": {
-            break;
-        }
-        case "taskHDRCubeTexture": {
-            break;
-        }
-        case "taskEquiRectangularCubeTexture": {
-            break;
-        }
-        default: break;
-    }
-    return null;
-}

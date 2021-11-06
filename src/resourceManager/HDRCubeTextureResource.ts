@@ -17,8 +17,4 @@ export class ImageResource extends Resource {
     onSuccess(task: HDRCubeTextureAssetTask) {
         super.onSuccess(task);
     }
-
-    onError(task: HDRCubeTextureAssetTask, message?: string, exception?: any) {
-        super.onError(task, message, exception);
-    }
 }

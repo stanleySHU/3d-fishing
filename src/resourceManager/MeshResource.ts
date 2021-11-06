@@ -12,10 +12,6 @@ export class MeshResource extends Resource {
     }
 
     onSuccess(task: MeshAssetTask) {
-       console.log(task.loadedMeshes[1]);
-    }
-
-    onError(task: MeshAssetTask, message?: string, exception?: any) {
-        super.onError(task, message, exception);
+        super.onSuccess(task);
     }
 }

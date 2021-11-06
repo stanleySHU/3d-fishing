@@ -13,8 +13,4 @@ export class ImageResource extends Resource {
     onSuccess(task: BinaryFileAssetTask) {
         super.onSuccess(task);
     }
-
-    onError(task: BinaryFileAssetTask, message?: string, exception?: any) {
-        super.onError(task, message, exception);
-    }
 }

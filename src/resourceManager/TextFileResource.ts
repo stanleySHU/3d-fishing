@@ -5,15 +5,25 @@ export type ITextFileResourceInitial = IResourceInitial & {};
 
 
 export class TextFileResource extends Resource {
+    private map: { [key: string]: any } = {};
+
     getTask(loader: AssetsManager, props: ITextFileResourceInitial): TextFileAssetTask {
         return loader.addTextFileTask(props.taskName, props.url);
     }
 
     onSuccess(task: TextFileAssetTask) {
-       
+        super.onSuccess(task);
     }
 
-    onError(task: TextFileAssetTask, message?: string, exception?: any) {
-        super.onError(task, message, exception);
+    get text(): string {
+        return this.task.text;
+    }
+
+    getjson<T>(): T {
+        let json = this.map['json'];
+        if (!json) {
+            this.map['json'] = JSON.parse(this.text);
+        }
+        return json;
     }
 }

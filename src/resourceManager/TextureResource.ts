@@ -16,8 +16,4 @@ export class TextureResource extends Resource {
     onSuccess(task: TextureAssetTask) {
         super.onSuccess(task);
     }
-
-    onError(task: TextureAssetTask, message?: string, exception?: any) {
-        super.onError(task, message, exception);
-    }
 }

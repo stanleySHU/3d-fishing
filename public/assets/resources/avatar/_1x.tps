@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>spritesheet-only</string>
         <key>textureFileName</key>
-        <filename>../../img/Avatars@1x.jpg</filename>
+        <filename>../../img/avatars@1x.jpg</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>

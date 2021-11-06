@@ -32,9 +32,9 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>spritesheet-only</string>
+        <string>json</string>
         <key>textureFileName</key>
-        <filename>../../img/avatars@2x.jpg</filename>
+        <filename>../../img/coins@2x.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -82,7 +82,7 @@
         <key>atfFormats</key>
         <string></string>
         <key>textureFormat</key>
-        <enum type="SettingsBase::TextureFormat">jpg</enum>
+        <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
         <uint>0</uint>
         <key>maxTextureSize</key>
@@ -128,13 +128,19 @@
             </struct>
         </struct>
         <key>dataFileNames</key>
-        <map type="GFileNameMap"/>
+        <map type="GFileNameMap">
+            <key>data</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename>../../img/coins@2x.json</filename>
+            </struct>
+        </map>
         <key>multiPack</key>
         <false/>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGB565</enum>
+        <enum type="SettingsBase::OutputFormat">BGRA8888</enum>
         <key>alphaHandling</key>
         <enum type="SettingsBase::AlphaHandling">ClearTransparentPixels</enum>
         <key>contentProtection</key>
@@ -157,7 +163,7 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>0</uint>
+            <uint>1</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
@@ -175,76 +181,18 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">0000.jpg</key>
-            <key type="filename">0001.jpg</key>
-            <key type="filename">0002.jpg</key>
-            <key type="filename">0003.jpg</key>
-            <key type="filename">0004.jpg</key>
-            <key type="filename">0005.jpg</key>
-            <key type="filename">0006.jpg</key>
-            <key type="filename">0007.jpg</key>
-            <key type="filename">0008.jpg</key>
-            <key type="filename">0009.jpg</key>
-            <key type="filename">0010.jpg</key>
-            <key type="filename">0011.jpg</key>
-            <key type="filename">0012.jpg</key>
-            <key type="filename">0013.jpg</key>
-            <key type="filename">0014.jpg</key>
-            <key type="filename">0015.jpg</key>
-            <key type="filename">0016.jpg</key>
-            <key type="filename">0017.jpg</key>
-            <key type="filename">0018.jpg</key>
-            <key type="filename">0019.jpg</key>
-            <key type="filename">0020.jpg</key>
-            <key type="filename">0021.jpg</key>
-            <key type="filename">0022.jpg</key>
-            <key type="filename">0023.jpg</key>
-            <key type="filename">0024.jpg</key>
-            <key type="filename">0025.jpg</key>
-            <key type="filename">0026.jpg</key>
-            <key type="filename">0027.jpg</key>
-            <key type="filename">0028.jpg</key>
-            <key type="filename">0029.jpg</key>
-            <key type="filename">0030.jpg</key>
-            <key type="filename">0031.jpg</key>
-            <key type="filename">0032.jpg</key>
-            <key type="filename">0033.jpg</key>
-            <key type="filename">0034.jpg</key>
-            <key type="filename">0035.jpg</key>
-            <key type="filename">0036.jpg</key>
-            <key type="filename">0037.jpg</key>
-            <key type="filename">0038.jpg</key>
-            <key type="filename">0039.jpg</key>
-            <key type="filename">0040.jpg</key>
-            <key type="filename">0041.jpg</key>
-            <key type="filename">0042.jpg</key>
-            <key type="filename">0043.jpg</key>
-            <key type="filename">0044.jpg</key>
-            <key type="filename">0045.jpg</key>
-            <key type="filename">0046.jpg</key>
-            <key type="filename">0047.jpg</key>
-            <key type="filename">0048.jpg</key>
-            <key type="filename">0049.jpg</key>
-            <key type="filename">0050.jpg</key>
-            <key type="filename">0051.jpg</key>
-            <key type="filename">0052.jpg</key>
-            <key type="filename">0053.jpg</key>
-            <key type="filename">0054.jpg</key>
-            <key type="filename">0055.jpg</key>
-            <key type="filename">0056.jpg</key>
-            <key type="filename">0057.jpg</key>
-            <key type="filename">0058.jpg</key>
-            <key type="filename">0059.jpg</key>
-            <key type="filename">0060.jpg</key>
-            <key type="filename">0061.jpg</key>
-            <key type="filename">0062.jpg</key>
-            <key type="filename">0063.jpg</key>
-            <key type="filename">0064.jpg</key>
-            <key type="filename">0065.jpg</key>
-            <key type="filename">0066.jpg</key>
-            <key type="filename">0067.jpg</key>
-            <key type="filename">0068.jpg</key>
-            <key type="filename">0069.jpg</key>
+            <key type="filename">IDR.png</key>
+            <key type="filename">INR.png</key>
+            <key type="filename">KRW.png</key>
+            <key type="filename">MYR.png</key>
+            <key type="filename">RMB.png</key>
+            <key type="filename">THB.png</key>
+            <key type="filename">USD.png</key>
+            <key type="filename">VND.png</key>
+            <key type="filename">diamond.png</key>
+            <key type="filename">diamond_1.png</key>
+            <key type="filename">free.png</key>
+            <key type="filename">normal.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -253,9 +201,40 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>72,72,144,144</rect>
+                <rect>18,18,36,36</rect>
                 <key>scale9Paddings</key>
-                <rect>72,72,144,144</rect>
+                <rect>18,18,36,36</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">fish.png</key>
+            <key type="filename">fishFree.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>21,23,42,46</rect>
+                <key>scale9Paddings</key>
+                <rect>21,23,42,46</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">realcash.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>22,18,44,36</rect>
+                <key>scale9Paddings</key>
+                <rect>22,18,44,36</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

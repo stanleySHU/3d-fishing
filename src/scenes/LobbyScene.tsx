@@ -17,7 +17,8 @@ import { useContextSelector } from 'use-context-selector';
 import { AppContext } from '../model/data/AppProvider';
 import { TableUpdateModel } from '../model/socket/TableUpdateModel';
 import { NavContext } from './NavController';
-import { Push } from '../store/NavController';
+import { Replace } from '../store/NavController';
+import { AtlasComponents, ImageBg } from './assets';
 
 type MyLobbySceneProps = {
     user: PlayerInfoModel,
@@ -33,7 +34,7 @@ const MyScene = React.memo((props: MyLobbySceneProps) => {
             websocket.sender.requestObserve(content[1]);
         },
         handleTableUpdate: (model: MessageModel<TableUpdateModel>) => {
-            SceneManager(Push('game', model.actorId));
+            SceneManager(Replace('game', model.actorId));
         }
     }
 
@@ -51,52 +52,48 @@ const MyScene = React.memo((props: MyLobbySceneProps) => {
         <adtFullscreenUi name='' idealWidth={960} idealHeight={540}>
             <container name='body' width='960px' height='540px'>
                 <container>
-                    <babylon-image url='/assets/img/2d/bg.jpg' />
-                    <babylon-image url='/assets/img/2d/dealer.png' width='324px' height='402px' top={102} left={0} verticalAlignment={0} horizontalAlignment={0} />
+                    <ImageBg />
+                    <AtlasComponents img='dealer.png' width='324px' height='402px' top={102} left={0} verticalAlignment={0} horizontalAlignment={0} />
                 </container>
                 <TableRoomList {...props} />
             </container>
             <container name='navbar' width='960px' height='82px' top={0} verticalAlignment={0}>
-                <babylon-image url='/assets/img/2d/nav_bar.png' width='960px' height='82px' />
-                <babylon-image url='/assets/img/2d/logo.png' width='146px' height='51px' verticalAlignment={0} top={8} />
+                <AtlasComponents img='nav_bar.png' width='960px' height='82px' />
+                <container width='146px' height='51px' verticalAlignment={0} top={8}>
+                    <AtlasComponents img='logo.png' width='146px' height='51px' />
+                </container>
                 <container top={10}>
                     <babylon-button width='65px' height='80px' left={888} verticalAlignment={0} horizontalAlignment={0} color='transparent'>
-                        <babylon-image url='/assets/img/2d/refresh.png' verticalAlignment={0} width='45.3px' height='45.3px' />
+                        <AtlasComponents img='refresh.png' verticalAlignment={0} width='45.3px' height='45.3px' />
                         <textBlock width='65px' height='11px' verticalAlignment={0} top={39} text='Refresh' fontSize='11px' fontWeight='bold' color='#8be2fe' outlineColor='#1c2457' outlineWidth={2} />
                     </babylon-button>
                 </container>
                 <NavUserInfo {...props} />
             </container>
             <container name='tabbar' width='960px' height='98px' verticalAlignment={1}>
-                <babylon-image url='/assets/img/2d/tab_bar.png' width='960px' height='98px' />
+                <AtlasComponents img="tab_bar.png" width='960px' height='98px' />
                 <container top={9}>
-                    <babylon-button width='72px' height='85px' left={66} verticalAlignment={0} horizontalAlignment={0} color='transparent'>
-                        <babylon-image url='/assets/img/2d/tab_gpi_lobby.png' verticalAlignment={0} width='72px' height='72px' />
-                        <textBlock width='72px' height='11px' verticalAlignment={0} top={69} text='GPI Lobby' fontSize='11px' fontWeight='bold' color='white' outlineColor='#114a46' outlineWidth={2} />
-                    </babylon-button>
-                    <babylon-button width='72px' height='85px' left={193} verticalAlignment={0} horizontalAlignment={0} color='transparent'>
-                        <babylon-image url='/assets/img/2d/tab_news.png' verticalAlignment={0} width='72px' height='72px' />
-                        <textBlock width='72px' height='11px' verticalAlignment={0} top={69} text='News' fontSize='11px' fontWeight='bold' color='white' outlineColor='#114a46' outlineWidth={2} />
-                    </babylon-button>
-                    <babylon-button width='72px' height='85px' left={321} verticalAlignment={0} horizontalAlignment={0} color='transparent'>
-                        <babylon-image url='/assets/img/2d/tab_ranking.png' verticalAlignment={0} width='72px' height='72px' />
-                        <textBlock width='72px' height='11px' verticalAlignment={0} top={69} text='Ranking' fontSize='11px' fontWeight='bold' color='white' outlineColor='#114a46' outlineWidth={2} />
-                    </babylon-button>
-                    <babylon-button width='72px' height='85px' left={447} verticalAlignment={0} horizontalAlignment={0} color='transparent'>
-                        <babylon-image url='/assets/img/2d/tab_help.png' verticalAlignment={0} width='72px' height='72px' />
-                        <textBlock width='72px' height='11px' verticalAlignment={0} top={69} text='Help' fontSize='11px' fontWeight='bold' color='white' outlineColor='#114a46' outlineWidth={2} />
-                    </babylon-button>
-                    <babylon-button width='72px' height='85px' left={575} verticalAlignment={0} horizontalAlignment={0} color='transparent'>
-                        <babylon-image url='/assets/img/2d/tab_settings.png' verticalAlignment={0} width='72px' height='72px' />
-                        <textBlock width='72px' height='11px' verticalAlignment={0} top={69} text='Settings' fontSize='11px' fontWeight='bold' color='white' outlineColor='#114a46' outlineWidth={2} />
-                    </babylon-button>
+                    {
+                        [
+                            {x:66,  image: 'tab_gpi_lobby.png', text:'GPI Lobby'},
+                            {x:193, image: 'tab_news.png', text: 'News'},
+                            {x:321, image: 'tab_ranking.png', text: 'Ranking'},
+                            {x:447, image: 'tab_help.png', text: 'Help'},
+                            {x:575, image: 'tab_settings.png', text: 'Settings'}
+                        ].map((item) => {
+                            return <babylon-button key={item.image} width='72px' height='85px' left={item.x} verticalAlignment={0} horizontalAlignment={0} color='transparent'>
+                                <AtlasComponents img={item.image} verticalAlignment={0} width='72px' height='72px' />
+                                <textBlock width='72px' height='11px' verticalAlignment={0} top={69} text={item.text} fontSize='11px' fontWeight='bold' color='white' outlineColor='#114a46' outlineWidth={2} />
+                            </babylon-button>
+                        })
+                    }
                 </container>
             </container>
         </adtFullscreenUi>
     </Scene>
-},  () => true);
+}, () => true);
 
-export const NavUserInfo = (props: MyLobbySceneProps) => {
+export const NavUserInfo = React.memo((props: MyLobbySceneProps) => {
     const { user } = props;
     const [_user, setUser] = useState<PlayerInfoModel>(user);
 
@@ -117,7 +114,7 @@ export const NavUserInfo = (props: MyLobbySceneProps) => {
     return <container>
         <babylon-button width='65px' height='65px' verticalAlignment={0} horizontalAlignment={0} top={7} left={10} color='transparent'>
             <Avatar index={_user.avatarIndex} width={0.85} height={0.85} />
-            <babylon-image url='/assets/img/2d/avatar_frame.png' />
+            <AtlasComponents img='avatar_frame.png' />
         </babylon-button>
         <textBlock width='105px' height='23px' text={_user.nickName} fontSize='23px' fontWeight='bold' textHorizontalAlignment={0} color='#ffffff' verticalAlignment={0} horizontalAlignment={0} left={85} top={8} />
         <container width='51px' height='20px' verticalAlignment={0} horizontalAlignment={0} left={203.5} top={13.5}>
@@ -136,19 +133,19 @@ export const NavUserInfo = (props: MyLobbySceneProps) => {
             <textBlock width='70px' height='10px' text={moneyFormat(_user.gemWallet)} fontSize='10px' fontWeight='bold' textHorizontalAlignment={1} color='#ffffff' verticalAlignment={0} horizontalAlignment={0} left={220} top={48} />
         </container>
     </container>
-}
+}, () => true)
 
-export const TableRoomList = (props: MyLobbySceneProps) => {
+export const TableRoomList = React.memo((props: MyLobbySceneProps) => {
     const { tableListMap } = props;
-    const [_tableListMap, setTableListMap] = useState<{[roomCategoryId: string]: TableListOutModel}>(tableListMap);
+    const [_tableListMap, setTableListMap] = useState<{ [roomCategoryId: string]: TableListOutModel }>(tableListMap);
 
     const websocket = WebsocketService();
     const agent = {
         handleTableListOut: (model: MessageModel<TableListOutModel>) => {
-            let content = model.messageContent;            
+            let content = model.messageContent;
             setTableListMap(() => {
                 tableListMap[content.roomCategoryId] = content;
-                return {...tableListMap}
+                return { ...tableListMap }
             });
         }
     }
@@ -179,12 +176,12 @@ export const TableRoomList = (props: MyLobbySceneProps) => {
                 const { x, y, getModel, image } = item;
                 const [loaded, actorId] = _(getModel);
                 return <babylon-button key={image} isEnabled={loaded} onPointerClickObservable={joinRoom.bind(null, actorId)} width='212px' height='166px' left={x} top={y} verticalAlignment={0} horizontalAlignment={0} color='transparent'>
-                    <babylon-image url={`/assets/img/2d/${image}.png`} />
+                    <AtlasComponents img={`${image}.png`} width='212px' height='166px' />
                 </babylon-button>
             })
         }
     </container>
-}
+}, () => true);
 
 export const LobbyScene = (props: ISceneProps) => {
     const [user, tableListMap] = useContextSelector(AppContext, e => {

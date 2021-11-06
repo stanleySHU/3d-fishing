@@ -11,8 +11,4 @@ export class ImageResource extends Resource {
     onSuccess(task: ImageAssetTask) {
         super.onSuccess(task);
     }
-
-    onError(task: ImageAssetTask, message?: string, exception?: any) {
-        super.onError(task, message, exception);
-    }
 }

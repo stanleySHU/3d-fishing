@@ -15,8 +15,4 @@ export class ImageResource extends Resource {
     onSuccess(task: EquiRectangularCubeTextureAssetTask) {
         super.onSuccess(task);
     }
-
-    onError(task: EquiRectangularCubeTextureAssetTask, message?: string, exception?: any) {
-        super.onError(task, message, exception);
-    }
 }
