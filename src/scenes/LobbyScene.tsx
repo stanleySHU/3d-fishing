@@ -18,7 +18,7 @@ import { AppContext } from '../model/data/AppProvider';
 import { TableUpdateModel } from '../model/socket/TableUpdateModel';
 import { NavContext } from './NavController';
 import { Replace } from '../store/NavController';
-import { AtlasComponents, ImageBg } from './assets';
+import { AtlasComponents, ImageLobbyBg } from './assets';
 
 type MyLobbySceneProps = {
     user: PlayerInfoModel,
@@ -34,7 +34,7 @@ const MyScene = React.memo((props: MyLobbySceneProps) => {
             websocket.sender.requestObserve(content[1]);
         },
         handleTableUpdate: (model: MessageModel<TableUpdateModel>) => {
-            SceneManager(Replace('game', model.actorId));
+            SceneManager(Replace('gamePreload', model.actorId));
         }
     }
 
@@ -52,8 +52,8 @@ const MyScene = React.memo((props: MyLobbySceneProps) => {
         <adtFullscreenUi name='' idealWidth={960} idealHeight={540}>
             <container name='body' width='960px' height='540px'>
                 <container>
-                    <ImageBg />
-                    <AtlasComponents img='dealer.png' width='324px' height='402px' top={102} left={0} verticalAlignment={0} horizontalAlignment={0} />
+                    <ImageLobbyBg />
+                    <AtlasComponents img='dealer.png' width='324px' height='402px' top={132} left={-50} verticalAlignment={0} horizontalAlignment={0} />
                 </container>
                 <TableRoomList {...props} />
             </container>

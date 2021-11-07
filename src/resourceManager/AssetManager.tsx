@@ -57,7 +57,7 @@ const AssetsManagerWithCache = () => {
                 let taskName = task.name,
                     resource = taskMap[taskName];
                 delete taskMap[taskName];
-                resource.cache && (resourceMap[taskName] = resource);
+                resource.cache == 'global-cache' && (resourceMap[taskName] = resource);
 
                 ++completeCount;
                 let progress = completeCount / totalCount * 100;
@@ -71,6 +71,7 @@ const AssetsManagerWithCache = () => {
             useEffect(() => {
                 sceneAssetsManager.current = new BabylonAssetsManager(scene);
                 const manager = sceneAssetsManager.current;
+                // manager.useDefaultLoadingScreen = false;
 
                 totalCount = completeCount = 0;
                 retryCount = retry || 2;

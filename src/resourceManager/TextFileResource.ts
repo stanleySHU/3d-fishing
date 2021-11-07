@@ -7,6 +7,10 @@ export type ITextFileResourceInitial = IResourceInitial & {};
 export class TextFileResource extends Resource {
     private map: { [key: string]: any } = {};
 
+    constructor() {
+        super('global-cache');
+    }
+
     getTask(loader: AssetsManager, props: ITextFileResourceInitial): TextFileAssetTask {
         return loader.addTextFileTask(props.taskName, props.url);
     }

@@ -1,31 +1,37 @@
 import { AtlasImage, IAtlasImage } from '../components/AtlasImage';
 
+const Multip = 1;
 
-export const ATLAS_BG_IMG = 'atlas_bg';
-export const ATLAS_BG_IMG_URL = '/assets/img/2d/bg.jpg';
+//
+export const IMG_2D_BG = `img_2d_bg`;
+export const IMG_2D_BG_URL = `/assets/img/2d/bg.jpg`;
 
-export const ATLAS_AVATARS_IMG = 'atlas_avatars_img';
-export const ATLAS_AVATARS_DATA = 'atlas_avatars_data';
-export const ATLAS_AVATARS_IMG_URL = '/assets/img/Avatars@2x.jpg';
-export const ATLAS_AVATARS_DATA_URL = '/assets/img/Avatars@2x.json';
+export const ATLAS_AVATARS_IMG = `atlas_avatars_img`;
+export const ATLAS_AVATARS_DATA = `atlas_avatars_data`;
+export const ATLAS_AVATARS_IMG_URL = `/assets/img/Avatars@${Multip}x.jpg`;
+export const ATLAS_AVATARS_DATA_URL = `/assets/img/Avatars@2${Multip}x.json`;
 
-export const ATLAS_COINS_IMG = 'atlas_coins_img';
-export const ATLAS_COINS_DATA = 'atlas_coins_data';
-export const ATLAS_COINS_IMG_URL = '/assets/img/coins@2x.png';
-export const ATLAS_COINS_DATA_URL = '/assets/img/coins@2x.json';
+export const ATLAS_COINS_IMG = `atlas_coins_img`;
+export const ATLAS_COINS_DATA = `atlas_coins_data`;
+export const ATLAS_COINS_IMG_URL = `/assets/img/coins@${Multip}x.png`;
+export const ATLAS_COINS_DATA_URL = `/assets/img/coins@${Multip}x.json`;
 
-export const ATLAS_FLAGS_IMG = 'atlas_flags_img';
-export const ATLAS_FLAGS_DATA = 'atlas_flags_data';
-export const ATLAS_FLAGS_IMG_URL = '/assets/img/flags@2x.png';
-export const ATLAS_FLAGS_DATA_URL = '/assets/img/flags@2x.json';
+export const ATLAS_FLAGS_IMG = `atlas_flags_img`;
+export const ATLAS_FLAGS_DATA = `atlas_flags_data`;
+export const ATLAS_FLAGS_IMG_URL = `/assets/img/flags@${Multip}x.png`;
+export const ATLAS_FLAGS_DATA_URL = `/assets/img/flags@${Multip}x.json`;
 
-export const ATLAS_COMPONENTS_IMG = 'atlas_components_img';
-export const ATLAS_COMPONENTS_DATA = 'atlas_components_data';
-export const ATLAS_COMPONENTS_IMG_URL = '/assets/img/components@2x.png';
-export const ATLAS_COMPONENTS_DATA_URL = '/assets/img/components@2x.json';
+export const ATLAS_COMPONENTS_IMG = `atlas_components_img`;
+export const ATLAS_COMPONENTS_DATA = `atlas_components_data`;
+export const ATLAS_COMPONENTS_IMG_URL = `/assets/img/components@${Multip}x.png`;
+export const ATLAS_COMPONENTS_DATA_URL = `/assets/img/components@${Multip}x.json`;
 
-export const ImageBg = () => {
-    return <babylon-image url={ATLAS_BG_IMG_URL} />
+//
+export const IMG_3D_BG = `img_3d_bg`;
+export const IMG_3D_BG_URL = `/assets/img/TableBg.png`;
+
+export const ImageLobbyBg = () => {
+    return <babylon-image url={IMG_2D_BG_URL} />
 }
 
 export const AtlasComponents = (props: IAtlasImage) => {

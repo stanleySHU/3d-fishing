@@ -3,4 +3,5 @@ export interface FireBulletBroadCastModel {
     readonly shootAngle: number;
     readonly shootAmount: number;
     readonly bulletId: number;
+    readonly fishId: number;
 }

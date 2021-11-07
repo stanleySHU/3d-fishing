@@ -8,7 +8,7 @@ import { WebsocketService } from '../services/websocket';
 import { Replace } from '../store/NavController';
 import { ISceneProps } from './BaseScene';
 import { NavContext } from './NavController';
-import { ATLAS_AVATARS_IMG, ATLAS_AVATARS_IMG_URL, ATLAS_BG_IMG, ATLAS_BG_IMG_URL, ATLAS_COINS_DATA, ATLAS_COINS_DATA_URL, ATLAS_COINS_IMG, ATLAS_COINS_IMG_URL, ATLAS_COMPONENTS_DATA, ATLAS_COMPONENTS_DATA_URL, ATLAS_COMPONENTS_IMG, ATLAS_COMPONENTS_IMG_URL, ATLAS_FLAGS_DATA, ATLAS_FLAGS_DATA_URL, ATLAS_FLAGS_IMG, ATLAS_FLAGS_IMG_URL } from './assets';
+import { ATLAS_AVATARS_IMG, ATLAS_AVATARS_IMG_URL, IMG_2D_BG, IMG_2D_BG_URL, ATLAS_COINS_DATA, ATLAS_COINS_DATA_URL, ATLAS_COINS_IMG, ATLAS_COINS_IMG_URL, ATLAS_COMPONENTS_DATA, ATLAS_COMPONENTS_DATA_URL, ATLAS_COMPONENTS_IMG, ATLAS_COMPONENTS_IMG_URL, ATLAS_FLAGS_DATA, ATLAS_FLAGS_DATA_URL, ATLAS_FLAGS_IMG, ATLAS_FLAGS_IMG_URL, IMG_3D_BG, IMG_3D_BG_URL } from './assets';
 
 type MyLoadingSceneProps = {
     next: string,
@@ -63,17 +63,23 @@ export const StartUpScene = (props: ISceneProps) => {
     }, []);
 
     return <MyScene next={next}>
-        <taskImg taskName={ATLAS_BG_IMG} url={ATLAS_BG_IMG_URL}/>
+        <taskImg taskName={IMG_2D_BG} url={IMG_2D_BG_URL}/>
 
         <taskImg taskName={ATLAS_AVATARS_IMG} url={ATLAS_AVATARS_IMG_URL}/>
 
         <taskImg taskName={ATLAS_COINS_IMG} url={ATLAS_COINS_IMG_URL}/>
-        <taskTextFile taskName={ATLAS_COINS_DATA} url={ATLAS_COINS_DATA_URL} cache={true}/>
+        <taskTextFile taskName={ATLAS_COINS_DATA} url={ATLAS_COINS_DATA_URL}/>
 
         <taskImg taskName={ATLAS_FLAGS_IMG} url={ATLAS_FLAGS_IMG_URL}/>
-        <taskTextFile taskName={ATLAS_FLAGS_DATA} url={ATLAS_FLAGS_DATA_URL} cache={true}/>
+        <taskTextFile taskName={ATLAS_FLAGS_DATA} url={ATLAS_FLAGS_DATA_URL}/>
 
         <taskImg taskName={ATLAS_COMPONENTS_IMG} url={ATLAS_COMPONENTS_IMG_URL}/>
-        <taskTextFile taskName={ATLAS_COMPONENTS_DATA} url={ATLAS_COMPONENTS_DATA_URL} cache={true}/>
+        <taskTextFile taskName={ATLAS_COMPONENTS_DATA} url={ATLAS_COMPONENTS_DATA_URL}/>
+    </MyScene>
+}
+
+export const GamePreloadScene = (props: ISceneProps) => {
+    return <MyScene next={props.next}>
+        <taskTexture taskName={IMG_3D_BG} url={IMG_3D_BG_URL}/>
     </MyScene>
 }

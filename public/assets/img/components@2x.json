@@ -2,7 +2,7 @@
 
 "avatar_frame.png":
 {
-	"frame": {"x":1646,"y":371,"w":192,"h":192},
+	"frame": {"x":779,"y":808,"w":192,"h":192},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":192},
@@ -10,11 +10,11 @@
 },
 "dealer.png":
 {
-	"frame": {"x":1319,"y":384,"w":325,"h":402},
-	"rotated": false,
+	"frame": {"x":1,"y":371,"w":628,"h":776},
+	"rotated": true,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":325,"h":402},
-	"sourceSize": {"w":325,"h":402}
+	"spriteSourceSize": {"x":0,"y":0,"w":628,"h":776},
+	"sourceSize": {"w":628,"h":776}
 },
 "logo.png":
 {
@@ -42,7 +42,7 @@
 },
 "room_advanced.png":
 {
-	"frame": {"x":335,"y":384,"w":420,"h":332},
+	"frame": {"x":1113,"y":384,"w":420,"h":332},
 	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":0,"w":420,"h":332},
@@ -50,15 +50,15 @@
 },
 "room_free.png":
 {
-	"frame": {"x":669,"y":384,"w":420,"h":326},
-	"rotated": true,
+	"frame": {"x":1447,"y":371,"w":420,"h":326},
+	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":326},
 	"sourceSize": {"w":420,"h":326}
 },
 "room_fresher.png":
 {
-	"frame": {"x":1,"y":384,"w":422,"h":332},
+	"frame": {"x":779,"y":384,"w":422,"h":332},
 	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":422,"h":332},
@@ -66,8 +66,8 @@
 },
 "room_master.png":
 {
-	"frame": {"x":997,"y":384,"w":420,"h":320},
-	"rotated": true,
+	"frame": {"x":1447,"y":699,"w":420,"h":320},
+	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":320},
 	"sourceSize": {"w":420,"h":320}
@@ -82,7 +82,7 @@
 },
 "tab_gpi_lobby.png":
 {
-	"frame": {"x":1840,"y":384,"w":144,"h":144},
+	"frame": {"x":973,"y":808,"w":144,"h":144},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":144},
@@ -90,7 +90,7 @@
 },
 "tab_help.png":
 {
-	"frame": {"x":1646,"y":709,"w":140,"h":140},
+	"frame": {"x":1869,"y":672,"w":140,"h":140},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":140,"h":140},
@@ -98,7 +98,7 @@
 },
 "tab_news.png":
 {
-	"frame": {"x":1788,"y":709,"w":140,"h":140},
+	"frame": {"x":1869,"y":814,"w":140,"h":140},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":140,"h":140},
@@ -106,7 +106,7 @@
 },
 "tab_ranking.png":
 {
-	"frame": {"x":1646,"y":565,"w":142,"h":142},
+	"frame": {"x":1869,"y":528,"w":142,"h":142},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":142,"h":142},
@@ -114,7 +114,7 @@
 },
 "tab_settings.png":
 {
-	"frame": {"x":1840,"y":530,"w":144,"h":142},
+	"frame": {"x":1869,"y":384,"w":144,"h":142},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":142},
@@ -125,8 +125,8 @@
 	"version": "1.0",
 	"image": "components@2x.png",
 	"format": "BGRA8888",
-	"size": {"w":2036,"h":850},
+	"size": {"w":2036,"h":1020},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:9b9b1eac76c0011c8c3e78315b81ef5c:b1b65b9679b81afcdec36a4b6ff02a4f:7260f6c59994e5b06288ff07e6847ddb$"
+	"smartupdate": "$TexturePacker:SmartUpdate:fec1b7a562fa1d1cc5c266fd82862e42:c2c15b064f940686c4fca918b625352b:7260f6c59994e5b06288ff07e6847ddb$"
 }
 }
