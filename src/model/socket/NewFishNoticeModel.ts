@@ -14,5 +14,5 @@ export interface NewFishModel {
 }
 
 export interface NewFishNoticeModel {
-    readonly fishs: readonly NewFishModel[];
+    readonly fs: readonly NewFishModel[];
 }

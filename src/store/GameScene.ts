@@ -1,4 +1,4 @@
-import { FishModel } from "../model/data/FishModel";
+import { FishModel } from "../model/core/FishModel";
 import { NewFishNoticeModel } from "../model/socket/NewFishNoticeModel";
 
 export type InitialState = {
@@ -28,7 +28,7 @@ export const reducer = (state: InitialState, action: Action): InitialState => {
         }
         case 'newFish': {
             let model: NewFishNoticeModel = action.payload.model, fishs = [...state.fishs];
-            for (let item of model.fishs) {
+            for (let item of model.fs) {
                 fishs.push(new FishModel(item));
             }
             return {
@@ -43,13 +43,13 @@ export const reducer = (state: InitialState, action: Action): InitialState => {
     return state;
 }
 
-export const NewFrames = () => {
+export const NewFrames = (): Action => {
     return {
         type: 'newFrames'
     }
 }
 
-export const NewFishNoticeAction = (model): Action => {
+export const NewFishNoticeAction = (model: NewFishNoticeModel): Action => {
     return {
         type: 'newFish',
         payload: {

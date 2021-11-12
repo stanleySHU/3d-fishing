@@ -1,14 +1,17 @@
-import { Mesh, Vector3 } from '@babylonjs/core';
+import { InstancedMesh, Vector3, Mesh } from '@babylonjs/core';
 import '@babylonjs/loaders/glTF';
-import { BabylonNode, FiberMeshProps, FiberMeshPropsCtor, useSceneLoader } from 'react-babylonjs';
+import { useEffect, useRef } from 'react';
+import { BabylonNode, FiberInstancedMeshProps, FiberInstancedMeshPropsCtor, useSceneLoader } from 'react-babylonjs';
 
 export type IFishProps = {
-    fishType: number
-} & FiberMeshProps & FiberMeshPropsCtor & BabylonNode<Mesh>;
+    fishType: number,
+    name: string,
+} & FiberInstancedMeshProps & BabylonNode<InstancedMesh>;
 
 export const Fish = (props: IFishProps) => {
     const result = useSceneLoader('/assets/gltf/', `${props.fishType}.gltf`,null, {
         meshNames: ''
-    });
-    return  result.meshes && <mesh fromInstance={result.meshes[0]} scaling={new Vector3(50, 50, 50)} {...props}/>
+    }); 
+
+    return  result.meshes && <instancedMesh source={result.meshes[1] as Mesh} scaling={new Vector3(10, 10, 10)} {...props}/>; 
 }
