@@ -42,7 +42,7 @@ export const initialState: InitialState = {
     current: null
 }
 
-export const Push = (id: string, initialState?: any): Action => {
+export const Push = (id: string, initialState?: {[key: string]: any}): Action => {
     return {
         type: 'PUSH',
         payload: {
@@ -59,7 +59,7 @@ export const Pop = (): Action => {
     }
 }
 
-export const Replace = (id: string, initialState?: any): Action => {
+export const Replace = (id: string, initialState?: {[key: string]: any}): Action => {
     return {
         type: 'REPLACE',
         payload: {

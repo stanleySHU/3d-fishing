@@ -10,7 +10,7 @@ export interface NewFishModel {
     readonly totalTime: number;
     readonly newStage: number;
     readonly path?: readonly Point[]; 
-    readonly size: number;
+    readonly size?: number;
 }
 
 export interface NewFishNoticeModel {

@@ -1,4 +1,4 @@
-import { MessageModel } from '../model/MessageModel';
+import { MessageModel } from '../model/socket/MessageModel';
 import { IBuyInCashType, IP2PGameCode } from '../units/customType';
 import { nowMillis } from '../units/date';
 import { firstUpperCase } from '../units/string';

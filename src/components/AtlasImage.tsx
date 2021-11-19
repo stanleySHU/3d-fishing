@@ -1,8 +1,8 @@
 import { ISpriteJSONAtlas, ISpriteJSONSprite } from '@babylonjs/core';
 import { Image } from '@babylonjs/gui';
 import { BabylonNode, FiberImageProps, FiberImagePropsCtor } from 'react-babylonjs';
-import { useAssetsManager } from '../resourceManager/AssetManager';
-import { TextFileResource } from '../resourceManager/TextFileResource';
+import { useAssetsManager } from '../loaders/resourceManager/AssetManager';
+import { TextFileResource } from '../loaders/resourceManager/TextFileResource';
 
 export type IAtlasImage = {
     atlas?: string,
@@ -17,7 +17,7 @@ export const AtlasImage = (props: IAtlasImage) => {
     const { frame, rotated } = frames;
 
     if (rotated) {
-        return <babylon-image {...props} sourceTop={frame.y} sourceLeft={frame.x} sourceWidth={frame.h} sourceHeight={frame.w} width={props.height} height={props.width} rotation={Math.PI/-2}/>
+        return <babylon-image {...props} sourceTop={frame.y} sourceLeft={frame.x} sourceWidth={frame.h} sourceHeight={frame.w} width={props.height} height={props.width} rotation={-1.57}/>
     } else {
         return <babylon-image {...props} sourceTop={frame.y} sourceLeft={frame.x} sourceWidth={frame.w} sourceHeight={frame.h} />
     }

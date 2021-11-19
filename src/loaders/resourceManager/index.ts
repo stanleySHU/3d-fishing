@@ -2,11 +2,10 @@ import { IBinaryResourceInitial } from './BinaryFileResource';
 import { ICubeTextureResourceInitial } from './CubeTextureManager';
 import { IEquiRectangularCubeTextureResourceInitial } from './EquiRectangularCubeTextureResource';
 import { IHDRCubeTextureResourceInitial } from './HDRCubeTextureResource';
-import { IImageResourceInitial, ImageResource } from './ImageResource';
-import { IMeshResourceInitial, MeshResource } from './MeshResource';
-import { Resource } from './Resource';
-import { ITextFileResourceInitial, TextFileResource } from './TextFileResource';
-import { ITextureResourceInitial, TextureResource } from './TextureResource';
+import { IImageResourceInitial } from './ImageResource';
+import { IMeshResourceInitial } from './MeshResource';
+import { ITextFileResourceInitial } from './TextFileResource';
+import { ITextureResourceInitial } from './TextureResource';
 
 declare global {
     namespace JSX {

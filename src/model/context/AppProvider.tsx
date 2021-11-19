@@ -3,7 +3,7 @@ import { WebsocketService } from "../../services/websocket";
 import { PlayerInfoModel } from "../socket/PlayerInfoModel";
 import { createAppContext, IAppContextModel } from "../../units/appContext";
 import { IConnectStatus } from "../../units/customType";
-import { MessageModel } from "../MessageModel";
+import { MessageModel } from "../socket/MessageModel";
 import { TableUpdateModel } from "../socket/TableUpdateModel";
 import { TableJoinSuccessModel } from "../socket/TableJoinSuccessModel";
 import { createContext  } from 'use-context-selector';
@@ -54,7 +54,11 @@ export const AppContextProvider = (props: { children: React.ReactNode }) => {
             });
         },
         handleTableUpdate: (model: MessageModel<TableUpdateModel>) => {
-
+            let content = model.messageContent;    
+            setTableUpdateMap(() => {
+                tableUpdateMap[model.actorId] = content;
+                return {...tableUpdateMap}
+            });
         },
         handleTableJoinSuccess: (model: MessageModel<TableJoinSuccessModel>) => {
 

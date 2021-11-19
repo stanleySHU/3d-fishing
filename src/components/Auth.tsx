@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { HttpService } from "../services/http";
 import { WebsocketService } from "../services/websocket";
 import { AuthModel } from "../model/http/AuthModel";
-import { AppContext } from "../model/data/AppProvider";
+import { AppContext } from "../model/context/AppProvider";
 import { useContextSelector  } from 'use-context-selector';
 
 export const Auth = (props) => {

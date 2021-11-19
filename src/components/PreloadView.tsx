@@ -1,4 +1,4 @@
-import { IPreloadViewProps } from "../resourceManager/AssetManager";
+import { IPreloadViewProps } from "../loaders/resourceManager/AssetManager";
 
 export const PreloadView = (props: IPreloadViewProps) => {
     const { progress } = props;

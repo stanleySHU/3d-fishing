@@ -1,9 +1,9 @@
 import { Engine } from 'react-babylonjs';
 import { NavController } from './scenes/NavController';
 import { LobbyScene } from './scenes/LobbyScene';
-import { GameScene } from './scenes/GameScene';
+import { GameScene } from './scenes/game/GameScene';
 import { GamePreloadScene, StartUpScene } from './scenes/LoadingScene'
-import { AppContextProvider } from './model/data/AppProvider';
+import { AppContextProvider } from './model/context/AppProvider';
 import { Auth } from './components/Auth';
 
 function App() {

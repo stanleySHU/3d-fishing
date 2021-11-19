@@ -26,9 +26,14 @@ export const ATLAS_COMPONENTS_DATA = `atlas_components_data`;
 export const ATLAS_COMPONENTS_IMG_URL = `/assets/img/components@${Multip}x.png`;
 export const ATLAS_COMPONENTS_DATA_URL = `/assets/img/components@${Multip}x.json`;
 
+export const ATLAS_GAMES_IMG = `atlas_games_img`;
+export const ATLAS_GAMES_DATA = `atlas_games_data`;
+export const ATLAS_GAMES_IMG_URL = `/assets/img/games@${Multip}x.png`;
+export const ATLAS_GAMES_DATA_URL = `/assets/img/games@${Multip}x.json`;
+
 //
 export const IMG_3D_BG = `img_3d_bg`;
-export const IMG_3D_BG_URL = `/assets/img/TableBg.png`;
+export const IMG_3D_BG_URL = `/assets/img/TableBg.jpg`;
 
 export const ImageLobbyBg = () => {
     return <babylon-image url={IMG_2D_BG_URL} />
@@ -36,6 +41,10 @@ export const ImageLobbyBg = () => {
 
 export const AtlasComponents = (props: IAtlasImage) => {
     return <AtlasImage {...props} atlas={ATLAS_COMPONENTS_DATA} url={ATLAS_COMPONENTS_IMG_URL}/>;
+}
+
+export const AtlasGames = (props: IAtlasImage) => {
+    return <AtlasImage {...props} atlas={ATLAS_GAMES_DATA} url={ATLAS_GAMES_IMG_URL} />
 }
 
 export const AtlasCoins= (props: IAtlasImage) => {

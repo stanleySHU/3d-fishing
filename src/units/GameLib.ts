@@ -1,5 +1,5 @@
 import { TableListConfigItem, TableListOutModel } from "../model/socket/TableListOutModel";
-import { TableInfoModel } from "../model/socket/TableUpdateModel";
+import { InSeatPlayerInfoModel, TableInfoModel } from "../model/socket/TableUpdateModel";
 
 function filterTableListItem<T>(model: TableListOutModel, type: 'normalTable' | 'tableConfig'): T[] {
     let res = model.items.filter(e => {
@@ -37,4 +37,31 @@ export function getRoomModelMaster(tableListMap: { [roomCategoryId: string]: Tab
 export function roomConfigKey(tableInfo: TableInfoModel) {
     let key = `${tableInfo.currency}_${tableInfo.cashCurrency ? tableInfo.cashCurrency + "_" : "" }${tableInfo.minBetAmount}`;
     return key;
+}
+
+export function getSeatExistPlayerArrMap(playerInfoPositionmap: {[key: string]: InSeatPlayerInfoModel}): boolean[] {
+    const res: boolean[] = [];
+    for (let key in playerInfoPositionmap) {
+        res[key] = !!playerInfoPositionmap[key];
+    }
+    return res;
+}
+
+export function getInGameOtherPlayerInfoPositionMap(playerInfoPositionmap: {[key: string]: InSeatPlayerInfoModel}, userId: number | string): {[key: string]: InSeatPlayerInfoModel} {
+    const map = {};
+    for (let key in playerInfoPositionmap) {
+        let playerInfo = playerInfoPositionmap[key];
+        if (playerInfo.userId != userId) {
+            map[key] = playerInfo;
+        }
+    }
+    return map;
+}
+
+export function getInGameCurrentPlayerInfo(playerInfoUserIdmap: {[key: string]: InSeatPlayerInfoModel}, userId: number | string): InSeatPlayerInfoModel {
+    for (let key in playerInfoUserIdmap) {
+        if (key == userId) {
+            return playerInfoUserIdmap[key];
+        }
+    }
 }

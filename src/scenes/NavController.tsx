@@ -1,6 +1,6 @@
 import React, { ReactElement, ReactNode, useEffect, useReducer, useRef } from "react";
 import { createContext } from "use-context-selector";
-import { Action, reducer, initialState, Push } from '../store/NavController';
+import { Action, reducer, initialState, Push } from '../model/store/NavController';
 import { ISceneProps } from "./BaseScene";
 
 export type INavControllerProps = {
@@ -26,7 +26,7 @@ export const NavController = (props: INavControllerProps) => {
         });
         dispatch(Push(enter));
     }, []);
-
+    
     return <NavContext.Provider value={{ SceneManager: dispatch }}>
         {
             state.scenes.map(e => {

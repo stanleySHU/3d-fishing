@@ -1,5 +1,6 @@
 export type IConnectStatus = 'close' | 'connecting' | 'connected' | 'reconnect1' | 'reconnect2' | 'reconnect3';
 export type IInGameState = 'idle' | 'inGame' | 'win' | 'lose' | 'inBet' | 'inDiscard' | 'inDraw' | 'fold' | 'drop' | "quit" | "awarded";
+export type IP2PCurrency = "PLAY_MONEY" | "CASH" | "FPP" | "VPP" | "TICKET" | "BONUS_WALLET" ;
 export type IP2PCashCurrency = "RMB" | "THB" | "IDR" | "MYR" | "VND" | "USD" | "JPY" | "KRW" | "UUS" | "AUD" | "EUR" | "GBP" | "ID2" | "INR" | "VN2";
 export type IP2PGameCode = 'PKMJ' | 'NIUNIU' | 'DMQQ' | 'TXHD' | 'TLMN' | 'PKDN' | 'BCMN' | 'OMPK' | 'PKPRO' | 'GGTH' | 'RMIN' | 'DDZB' | 'BIG2' | 'GPI' | 'FISH';;
 export type IBuyInCashType = 'PLAY_MONEY' | 'REAL_CASH' | 'BONUS_WALLET';

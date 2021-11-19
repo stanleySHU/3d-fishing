@@ -1,4 +1,4 @@
-import { IBuyInCashType, IInGameState, IP2PCashCurrency } from "../../units/customType";
+import { IBuyInCashType, IInGameState, IP2PCashCurrency, IP2PCurrency } from "../../units/customType";
 import { NewFishModel } from "./NewFishNoticeModel";
 import { LevelModel } from "./PlayerInfoModel";
 
@@ -6,7 +6,7 @@ export interface TableInfoModel {
     readonly creatorActorId: string;
     readonly displayName: string;
     readonly seatsPerTable: number;
-    readonly currency: IP2PCashCurrency;
+    readonly currency: IP2PCurrency;
     readonly cashCurrency: IP2PCashCurrency;
     readonly colorCode: string;
     readonly playerHandSize: number;
@@ -34,9 +34,10 @@ export interface InSeatPlayerInfoModel {
 
 export interface TableUpdateModel {
     readonly tableInfo: TableInfoModel;
-    readonly seatedPlayersMap: {readonly[key: string]: InSeatPlayerInfoModel};
+    readonly seatedPlayersMap: {readonly[key: number]: InSeatPlayerInfoModel};
     readonly gameRecordId: number;
     readonly roomCategoryId: string;
+    readonly actorId: string,
     readonly fishStage?: {
         readonly stageNumber: number;
         readonly fishs: readonly NewFishModel[]

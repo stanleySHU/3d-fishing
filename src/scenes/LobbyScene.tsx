@@ -1,6 +1,6 @@
 import { Vector3 } from '@babylonjs/core'
 import React, { useEffect, useState } from 'react'
-import { Scene } from 'react-babylonjs'
+import { Scene, useScene } from 'react-babylonjs'
 import { Avatar } from '../components/Avatar';
 import { Chip } from '../components/Chip';
 import { moneyFormat } from '../units/number';
@@ -11,13 +11,13 @@ import { isPresent } from '../units/lang';
 import { TableListConfigItem, TableListOutModel } from '../model/socket/TableListOutModel';
 import { PlayerInfoModel } from '../model/socket/PlayerInfoModel';
 import { ISceneProps } from './BaseScene';
-import { MessageModel } from '../model/MessageModel';
+import { MessageModel } from '../model/socket/MessageModel';
 import { AvailableTableModel } from '../model/socket/AvailableTableModel';
 import { useContextSelector } from 'use-context-selector';
-import { AppContext } from '../model/data/AppProvider';
+import { AppContext } from '../model/context/AppProvider';
 import { TableUpdateModel } from '../model/socket/TableUpdateModel';
 import { NavContext } from './NavController';
-import { Replace } from '../store/NavController';
+import { Replace } from '../model/store/NavController';
 import { AtlasComponents, ImageLobbyBg } from './assets';
 
 type MyLobbySceneProps = {
@@ -34,7 +34,7 @@ const MyScene = React.memo((props: MyLobbySceneProps) => {
             websocket.sender.requestObserve(content[1]);
         },
         handleTableUpdate: (model: MessageModel<TableUpdateModel>) => {
-            SceneManager(Replace('gamePreload', model.actorId));
+            SceneManager(Replace('gamePreload', {actorId: model.actorId}));
         }
     }
 
@@ -50,14 +50,14 @@ const MyScene = React.memo((props: MyLobbySceneProps) => {
         <freeCamera name='camera' position={new Vector3(0, 700, 0)} target={new Vector3(0, 0, 0)} />
         {/* <directionalLight name='light' direction={new Vector3(0, -1, 0)} /> */}
         <adtFullscreenUi name='' idealWidth={960} idealHeight={540}>
-            <container name='body' width='960px' height='540px'>
+            <container name='body-mod' width='960px' height='540px'>
                 <container>
                     <ImageLobbyBg />
                     <AtlasComponents img='dealer.png' width='324px' height='402px' top={132} left={-50} verticalAlignment={0} horizontalAlignment={0} />
                 </container>
                 <TableRoomList {...props} />
             </container>
-            <container name='navbar' width='960px' height='82px' top={0} verticalAlignment={0}>
+            <container name='navbar-mod' width='960px' height='82px' top={0} verticalAlignment={0}>
                 <AtlasComponents img='nav_bar.png' width='960px' height='82px' />
                 <container width='146px' height='51px' verticalAlignment={0} top={8}>
                     <AtlasComponents img='logo.png' width='146px' height='51px' />
@@ -70,7 +70,7 @@ const MyScene = React.memo((props: MyLobbySceneProps) => {
                 </container>
                 <NavUserInfo {...props} />
             </container>
-            <container name='tabbar' width='960px' height='98px' verticalAlignment={1}>
+            <container name='tabbar-mod' width='960px' height='98px' verticalAlignment={1}>
                 <AtlasComponents img="tab_bar.png" width='960px' height='98px' />
                 <container top={9}>
                     {
@@ -157,7 +157,7 @@ export const TableRoomList = React.memo((props: MyLobbySceneProps) => {
         }
     }, []);
 
-    function joinRoom(actorId: string) {
+    function onJoinRoom(actorId: string) {
         websocket.sender.joinTableConfig(actorId);
     }
 
@@ -175,7 +175,7 @@ export const TableRoomList = React.memo((props: MyLobbySceneProps) => {
             ].map((item) => {
                 const { x, y, getModel, image } = item;
                 const [loaded, actorId] = _(getModel);
-                return <babylon-button key={image} isEnabled={loaded} onPointerClickObservable={joinRoom.bind(null, actorId)} width='212px' height='166px' left={x} top={y} verticalAlignment={0} horizontalAlignment={0} color='transparent'>
+                return <babylon-button key={image} isEnabled={loaded} onPointerClickObservable={onJoinRoom.bind(null, actorId)} width='212px' height='166px' left={x} top={y} verticalAlignment={0} horizontalAlignment={0} color='transparent'>
                     <AtlasComponents img={`${image}.png`} width='212px' height='166px' />
                 </babylon-button>
             })

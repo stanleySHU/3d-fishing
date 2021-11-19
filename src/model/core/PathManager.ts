@@ -1,4 +1,5 @@
 import { Scalar, Vector3 } from "@babylonjs/core";
+import { randomStraight } from "../../units/pathTool";
 
 export interface INextStatus {
     position: Vector3;
@@ -15,7 +16,7 @@ const SimplePath = (points: Vector3[]): BasePath =>{
         lerp: (per: number) => {
             const status: INextStatus = {
                 position: Vector3.Lerp(startPoint, endPoint, Scalar.Clamp(per, 0, 1)),
-                direction: startPoint.subtract(endPoint)
+                direction: endPoint.subtract(startPoint)
             }
             return status;
         }
@@ -37,7 +38,7 @@ const BlendPath = (): BasePath => {
 const PATH_MAP: { [key: string | number]: BasePath } = (() => {
     let map = {};
     for (let i = 1000; i <= 1100; i++) {
-        map[i] = SimplePath([new Vector3(-300, -72, 20), new Vector3(200, -36, 20)]);
+        map[i] = SimplePath(randomStraight(96, 54, 72, 27));
     }
     return map;
 })();
