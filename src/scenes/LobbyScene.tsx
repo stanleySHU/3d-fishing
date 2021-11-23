@@ -1,10 +1,10 @@
 import { Vector3 } from '@babylonjs/core'
 import React, { useEffect, useState } from 'react'
 import { Scene, useScene } from 'react-babylonjs'
-import { Avatar } from '../components/Avatar';
-import { Chip } from '../components/Chip';
+import { Avatar } from '../components/babylonjs/Avatar';
+import { Chip } from '../components/babylonjs/Chip';
 import { moneyFormat } from '../units/number';
-import { Flag } from '../components/Flag';
+import { Flag } from '../components/babylonjs/Flag';
 import { WebsocketService } from '../services/websocket';
 import { getRoomModelFree, getRoomModelFresher, getRoomModelAdvanced, getRoomModelMaster } from '../units/GameLib';
 import { isPresent } from '../units/lang';

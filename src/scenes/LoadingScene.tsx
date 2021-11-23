@@ -2,8 +2,8 @@ import { Vector3 } from '@babylonjs/core';
 import React, { ReactNode, useEffect, useState } from 'react';
 import { Scene } from 'react-babylonjs';
 import { useContextSelector } from 'use-context-selector';
-import { PreloadView } from '../components/PreloadView';
-import { AssetsLoader } from '../loaders/resourceManager/AssetManager';
+import { PreloadView3D } from '../components/PreloadView';
+import { AssetsLoader } from '../loaders/babylonjs/resourceManager/AssetManager';
 import { WebsocketService } from '../services/websocket';
 import { Replace } from '../model/store/NavController';
 import { ISceneProps } from './BaseScene';
@@ -41,7 +41,7 @@ const MyScene = React.memo((props: MyLoadingSceneProps) => {
 
     return <Scene>
         <freeCamera name='camera' position={new Vector3(0, 700, 0)} target={new Vector3(0, 0, 0)} />
-        <AssetsLoader onFinish={onFinish} onLoadFail={onLoadFail} PreloadView={PreloadView}>
+        <AssetsLoader onFinish={onFinish} onLoadFail={onLoadFail} PreloadView={PreloadView3D}>
             {children}
         </AssetsLoader>
 

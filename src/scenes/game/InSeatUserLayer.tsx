@@ -1,4 +1,4 @@
-import { Avatar } from "../../components/Avatar";
+import { Avatar } from "../../components/babylonjs/Avatar";
 import { AtlasGames } from "../assets";
 
 export const InSeatUserLayer = (props) => {

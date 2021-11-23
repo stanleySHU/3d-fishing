@@ -3,7 +3,7 @@ import '@babylonjs/loaders/glTF';
 import { ContainerAssetTask } from '@babylonjs/core';
 import { useEffect, useState } from 'react';
 import { BabylonNode, FiberTransformNodeProps, FiberTransformNodePropsCtor } from 'react-babylonjs';
-import { ContainerTask, TaskType, useOverrideAssetManager } from '../../loaders/useAssetContainer';
+import { ContainerTask, TaskType, useOverrideAssetManager } from '../../loaders/babylonjs/useAssetContainer';
 
 export type IFishProps = {
     fishType: number,

@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>spritesheet-only</string>
+        <string>pixijs4</string>
         <key>textureFileName</key>
         <filename>../../img/avatars@2x.jpg</filename>
         <key>flipPVR</key>
@@ -128,7 +128,13 @@
             </struct>
         </struct>
         <key>dataFileNames</key>
-        <map type="GFileNameMap"/>
+        <map type="GFileNameMap">
+            <key>data</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename>../../img/avatars@2x.json</filename>
+            </struct>
+        </map>
         <key>multiPack</key>
         <false/>
         <key>forceIdenticalLayout</key>
@@ -157,7 +163,7 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>0</uint>
+            <uint>1</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>

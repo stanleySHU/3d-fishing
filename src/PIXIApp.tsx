@@ -1,34 +1,38 @@
-import { Engine } from 'react-babylonjs';
+import { Engine as ReactBabylonjsEngine } from './App';
 import { Engine as babylonjsEngine } from '@babylonjs/core';
 
 import { Renderer, Container as pixiContainer } from 'pixi.js';
-import { useEffect } from 'react';
-import { render, Sprite, Text } from '@inlet/react-pixi';
-import { createContext  } from 'use-context-selector';
+import { PropsWithChildren, useEffect, useState } from 'react';
+import { createContext } from 'use-context-selector';
 
 type IPIXIProps = {
-    reactBablonjsEngineRef: React.MutableRefObject<Engine>
+    reactBablonjsEngineRef: React.MutableRefObject<ReactBabylonjsEngine>
 }
 
-export const PIXIApp = (props: IPIXIProps) => {
+export const PIXIApp = (props: PropsWithChildren<IPIXIProps>) => {
+    const [stage2D, setStage2D] = useState<pixiContainer>(null);
+
     useEffect(() => {
+        const stage = new pixiContainer();
+        setStage2D(stage);
+
         const reactBablonjsEngine = props.reactBablonjsEngineRef.current,
-            engine: babylonjsEngine = (reactBablonjsEngine as any).engine;
+            engine: babylonjsEngine = (reactBablonjsEngine as any).engine,
+            canvas = engine.getRenderingCanvas();
 
         const pixiRenderer = new Renderer({
             context: engine._gl as any,
-            view: engine.getRenderingCanvas(),
-            width: engine.getRenderWidth(),
-            height: engine.getRenderHeight(),
+            view: canvas,
+            width: 960,
+            height: 540,
+            resolution: 1,
             clearBeforeRender: false
         });
-        const container = new pixiContainer();
-        render(<ReactPixiApp />, container)
 
-        const resize = reactBablonjsEngine.onResizeWindow;
-        reactBablonjsEngine.onResizeWindow = () => {
-            resize();
-        }
+        const afterEngineResizeObservable = reactBablonjsEngine.onAfterEngineResizeObservable.add((e) => {
+            pixiRenderer.resize(960, 540);
+        });
+
         const beforeRenderObservable = reactBablonjsEngine.onBeforeRenderLoopObservable.add((e) => {
             pixiRenderer.reset();
         });
@@ -36,31 +40,31 @@ export const PIXIApp = (props: IPIXIProps) => {
         const endRenderObservable = reactBablonjsEngine.onEndRenderLoopObservable.add((e) => {
             e.wipeCaches(true);
             pixiRenderer.reset();
-            pixiRenderer.render(container);
+            pixiRenderer.render(stage);
         });
         return () => {
-            reactBablonjsEngine.onResizeWindow = resize;
             reactBablonjsEngine.onBeforeRenderLoopObservable.remove(beforeRenderObservable);
             reactBablonjsEngine.onEndRenderLoopObservable.remove(endRenderObservable);
+            reactBablonjsEngine.onAfterEngineResizeObservable.remove(afterEngineResizeObservable);
         }
     }, []);
 
-    return null;;
+    return stage2D && <ReactPixiAppProvider stage2D={stage2D}>
+        {props.children}
+    </ReactPixiAppProvider>;
 }
 
-const ReactPixiApp = () => {
-    return <ReactPixiAppProvider>
-        <Sprite image="https://i.imgur.com/1yLS2b8.jpg"/>
-    </ReactPixiAppProvider>
+//provider
+type IReactPixiAppProviderProps = {
+    stage2D: pixiContainer
 }
-
-
-type IReactPixiAppOptions = {
-
-}
-const ReactPixiAppContext = createContext<IReactPixiAppOptions>({});
-const ReactPixiAppProvider = (props) => {
-    return <ReactPixiAppContext.Provider value={{}}>
+type IReactPixiAppContextOptions = {
+    stage2D: pixiContainer
+};
+export const ReactPixiAppContext = createContext<IReactPixiAppContextOptions>({} as any);
+const ReactPixiAppProvider = (props: PropsWithChildren<IReactPixiAppProviderProps>) => {
+    const { stage2D } = props;
+    return <ReactPixiAppContext.Provider value={{ stage2D: stage2D }}>
         {props.children}
     </ReactPixiAppContext.Provider>
 }

@@ -120,6 +120,8 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":36},
 	"sourceSize": {"w":36,"h":36}
 }},
+"animations": {
+},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
@@ -127,6 +129,6 @@
 	"format": "BGRA8888",
 	"size": {"w":114,"h":234},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:0b79b9786bf71fbc51fc75d15b9ac70e:0d671ee2c9b4a5d54bc0bb6eca6dde12:4435b639891202c114619abe5f1ec491$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d62dcf6600db0681210c1bf1bd2c217e:0d671ee2c9b4a5d54bc0bb6eca6dde12:4435b639891202c114619abe5f1ec491$"
 }
 }

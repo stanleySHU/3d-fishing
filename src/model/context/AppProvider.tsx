@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { WebsocketService } from "../../services/websocket";
-import { PlayerInfoModel } from "../socket/PlayerInfoModel";
+import { CustomUserData, PlayerInfoModel } from "../socket/PlayerInfoModel";
 import { createAppContext, IAppContextModel } from "../../units/appContext";
 import { IConnectStatus } from "../../units/customType";
 import { MessageModel } from "../socket/MessageModel";
@@ -10,7 +10,7 @@ import { createContext  } from 'use-context-selector';
 import { TableListOutModel } from "../socket/TableListOutModel";
 import { RoomListModel } from "../socket/RoomListModel";
 
-type IAppContextOptions = {
+export type IAppContextOptions = {
     user: PlayerInfoModel,
     context: IAppContextModel,
     connectStatus: IConnectStatus,
@@ -21,7 +21,7 @@ type IAppContextOptions = {
 export const AppContext = createContext<IAppContextOptions>({} as any);
 
 export const AppContextProvider = (props: { children: React.ReactNode }) => {
-    const [user, setUser] = useState<PlayerInfoModel>(null);
+    const [user, setUser] = useState<PlayerInfoModel>(CustomUserData as any);
     const [connectStatus, setConnectStatus] = useState<IConnectStatus>('connecting');
     const [tableListMap, setTableListMap] = useState<{[key: string]: TableListOutModel}>({}); 
     const [tableUpdateMap, setTableUpdateMap] = useState<{ [actorId: string]: TableUpdateModel }>({});

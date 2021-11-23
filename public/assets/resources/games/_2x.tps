@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>json</string>
+        <string>pixijs4</string>
         <key>textureFileName</key>
         <filename>../../img/games@2x.png</filename>
         <key>flipPVR</key>

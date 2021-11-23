@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>json</string>
+        <string>pixijs4</string>
         <key>textureFileName</key>
         <filename>../../img/components@2x.png</filename>
         <key>flipPVR</key>
@@ -196,6 +196,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">daily_login.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>22,22,44,44</rect>
+                <key>scale9Paddings</key>
+                <rect>22,22,44,44</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">dealer.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -212,6 +227,7 @@
                 <false/>
             </struct>
             <key type="filename">logo.png</key>
+            <key type="filename">logo_temp.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -253,6 +269,36 @@
                 <rect>23,23,45,45</rect>
                 <key>scale9Paddings</key>
                 <rect>23,23,45,45</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">rewards.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>21,22,42,44</rect>
+                <key>scale9Paddings</key>
+                <rect>21,22,42,44</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">rewards_bg.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>44,55,88,110</rect>
+                <key>scale9Paddings</key>
+                <rect>44,55,88,110</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

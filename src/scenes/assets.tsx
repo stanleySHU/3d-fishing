@@ -1,4 +1,4 @@
-import { AtlasImage, IAtlasImage } from '../components/AtlasImage';
+import { AtlasImage, IAtlasImage } from '../components/babylonjs/AtlasImage';
 
 const Multip = 1;
 
@@ -9,7 +9,7 @@ export const IMG_2D_BG_URL = `/assets/img/2d/bg.jpg`;
 export const ATLAS_AVATARS_IMG = `atlas_avatars_img`;
 export const ATLAS_AVATARS_DATA = `atlas_avatars_data`;
 export const ATLAS_AVATARS_IMG_URL = `/assets/img/Avatars@${Multip}x.jpg`;
-export const ATLAS_AVATARS_DATA_URL = `/assets/img/Avatars@2${Multip}x.json`;
+export const ATLAS_AVATARS_DATA_URL = `/assets/img/Avatars@${Multip}x.json`;
 
 export const ATLAS_COINS_IMG = `atlas_coins_img`;
 export const ATLAS_COINS_DATA = `atlas_coins_data`;
