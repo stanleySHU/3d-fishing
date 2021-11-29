@@ -47,7 +47,7 @@ export const AppContextProvider = (props: { children: React.ReactNode }) => {
             }
         },
         handleTableListOut: (model: MessageModel<TableListOutModel>) => {
-            let content = model.messageContent;            
+            let content = model.messageContent;        
             setTableListMap(() => {
                 tableListMap[content.roomCategoryId] = content;
                 return {...tableListMap}

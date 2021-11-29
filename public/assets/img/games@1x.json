@@ -2,7 +2,7 @@
 
 "auto_off.png":
 {
-	"frame": {"x":276,"y":60,"w":56,"h":56},
+	"frame": {"x":71,"y":350,"w":56,"h":56},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":56},
@@ -10,15 +10,23 @@
 },
 "auto_on.png":
 {
-	"frame": {"x":320,"y":1,"w":56,"h":56},
+	"frame": {"x":1,"y":433,"w":56,"h":56},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":56},
 	"sourceSize": {"w":56,"h":56}
 },
+"avatar_frame.png":
+{
+	"frame": {"x":1,"y":367,"w":64,"h":64},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+	"sourceSize": {"w":64,"h":64}
+},
 "btn_join.png":
 {
-	"frame": {"x":261,"y":1,"w":57,"h":57},
+	"frame": {"x":67,"y":408,"w":57,"h":57},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":57},
@@ -26,7 +34,7 @@
 },
 "btn_message.png":
 {
-	"frame": {"x":226,"y":73,"w":48,"h":48},
+	"frame": {"x":76,"y":75,"w":48,"h":48},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":48},
@@ -34,7 +42,7 @@
 },
 "btn_primary_more.png":
 {
-	"frame": {"x":171,"y":74,"w":53,"h":53},
+	"frame": {"x":74,"y":295,"w":53,"h":53},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":53,"h":53},
@@ -42,7 +50,7 @@
 },
 "img_avatar_container.png":
 {
-	"frame": {"x":186,"y":1,"w":73,"h":70},
+	"frame": {"x":1,"y":75,"w":73,"h":70},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":70},
@@ -50,39 +58,39 @@
 },
 "img_cannon_container_large.png":
 {
-	"frame": {"x":1,"y":1,"w":183,"h":71},
-	"rotated": false,
+	"frame": {"x":1,"y":147,"w":183,"h":71},
+	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":183,"h":71},
 	"sourceSize": {"w":183,"h":71}
 },
 "img_cannon_container_small_up.png":
 {
-	"frame": {"x":378,"y":1,"w":122,"h":72},
-	"rotated": true,
+	"frame": {"x":1,"y":1,"w":122,"h":72},
+	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":122,"h":72},
 	"sourceSize": {"w":122,"h":72}
 },
 "img_cannon_value_container.png":
 {
-	"frame": {"x":334,"y":59,"w":68,"h":33},
-	"rotated": true,
+	"frame": {"x":1,"y":332,"w":68,"h":33},
+	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":33},
 	"sourceSize": {"w":68,"h":33}
 },
 "img_info_container.png":
 {
-	"frame": {"x":1,"y":74,"w":168,"h":43},
-	"rotated": false,
+	"frame": {"x":76,"y":125,"w":168,"h":43},
+	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":168,"h":43},
 	"sourceSize": {"w":168,"h":43}
 },
 "lock_off.png":
 {
-	"frame": {"x":452,"y":1,"w":56,"h":56},
+	"frame": {"x":59,"y":467,"w":56,"h":56},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":56},
@@ -90,7 +98,7 @@
 },
 "lock_on.png":
 {
-	"frame": {"x":452,"y":59,"w":56,"h":56},
+	"frame": {"x":1,"y":491,"w":56,"h":56},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":56},
@@ -101,8 +109,8 @@
 	"version": "1.0",
 	"image": "games@1x.png",
 	"format": "BGRA8888",
-	"size": {"w":509,"h":128},
+	"size": {"w":128,"h":548},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:8f053edd31e82a4681bf1fc5bc4f726d:10212b199dab772c98b66770bfe1f6af:5a24b0d91fa3d663dd1762a56399e4b5$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0d851f6c87476ae5506f51a9c8f8c25b:999cecff26459a20f94a87ac3dafa090:5a24b0d91fa3d663dd1762a56399e4b5$"
 }
 }

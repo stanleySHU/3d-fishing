@@ -5,8 +5,9 @@ import { useRef } from 'react';
 import { PIXIApp } from './PIXIApp';
 import { NavController } from './scenes/NavController';
 import { LobbyScene } from './scenes1/LobbyScene';
-import { StartUpScene } from './scenes1/LoadingScene';
+import { StartUpScene, GamePreloadScene } from './scenes1/LoadingScene';
 import { Observable } from '@babylonjs/core';
+import { GameScene } from './scenes1/game/GameScene';
 
 function App() {
   const engineRef = useRef<Engine>();
@@ -18,6 +19,8 @@ function App() {
           <NavController enter="startUp">
             <StartUpScene id="startUp" next="lobby"/>
             <LobbyScene id="lobby" />
+            <GamePreloadScene id="gamePreload" next="game"/>
+            <GameScene id="game"/>
             {/* <StartUpScene id="startUp" />
             <LobbyScene id="lobby" />
             <GamePreloadScene id="gamePreload" next="game" />

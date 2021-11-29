@@ -1,5 +1,5 @@
-import { Rectangle, Point, Graphics as pixiGraphics } from 'pixi.js';
-import React, { useCallback, useMemo } from "react";
+import { Rectangle, Graphics as pixiGraphics } from 'pixi.js';
+import React, { useCallback, useEffect, useMemo } from "react";
 import { Container, Sprite, Text, Graphics } from "@inlet/react-pixi"
 import { ISceneProps, ViewController } from '../scenes/BaseScene';
 import { AtlasComponents } from "./assets";
@@ -14,8 +14,34 @@ import { Avatar } from '../components/pixi/Avatar';
 import { Chip } from '../components/pixi/Chip';
 import { Flag } from '../components/pixi/Flag';
 import { moneyFormat } from '../units/number';
+import { MessageModel } from '../model/socket/MessageModel';
+import { AvailableTableModel } from '../model/socket/AvailableTableModel';
+import { TableUpdateModel } from '../model/socket/TableUpdateModel';
+import { Replace } from '../model/store/NavController';
+import { NavContext } from '../scenes/NavController';
 
 export const LobbyScene = (props: ISceneProps) => {
+    const SceneManager = useContextSelector(NavContext, e => e.SceneManager);
+    const websocket = WebsocketService();
+
+    const agent = {
+        handleAvailableTable: (model: MessageModel<AvailableTableModel>) => {
+            const content = model.messageContent;
+            websocket.sender.requestObserve(content[1]);
+        },
+        handleTableUpdate: (model: MessageModel<TableUpdateModel>) => {
+            SceneManager(Replace('gamePreload', {actorId: model.actorId}));
+        }
+    }
+
+    useEffect(() => {
+        websocket.sender.joinP2PGame('FISH');
+        const unRegister = websocket.register(agent);
+        return () => {
+            unRegister();
+        }
+    }, []);
+
     return <ViewController>
         <LobbyScene2D />
         <LobbyScene3D />
@@ -23,6 +49,26 @@ export const LobbyScene = (props: ISceneProps) => {
 }
 
 export const LobbyScene2D = () => {
+    function onOpenGPILobby() {
+
+    }
+
+    function onOpenNews() {
+
+    }
+
+    function onOpenRanking() {
+
+    }
+
+    function onOpenHelp() {
+
+    }
+
+    function onOpenSettings() {
+        
+    }
+
     return <Container>
         <Container>
             <Sprite image="/assets/img/2d/bg.jpg" />
@@ -50,14 +96,14 @@ export const LobbyScene2D = () => {
             <Container y={14}>
                 {
                     [
-                        { x: 109, img: "tab_gpi_lobby.png", text: "GPI Lobby" },
-                        { x: 278, img: "tab_news.png", text: "News" },
-                        { x: 448, img: "tab_ranking.png", text: "Ranking" },
-                        { x: 618, img: "tab_help.png", text: "Help" },
-                        { x: 787, img: "tab_settings.png", text: "Settings" }
+                        { x: 109, img: "tab_gpi_lobby.png", text: "GPI Lobby", click: onOpenGPILobby },
+                        { x: 278, img: "tab_news.png", text: "News", click: onOpenNews },
+                        { x: 448, img: "tab_ranking.png", text: "Ranking", click: onOpenRanking },
+                        { x: 618, img: "tab_help.png", text: "Help", click: onOpenHelp },
+                        { x: 787, img: "tab_settings.png", text: "Settings", click: onOpenSettings }
                     ].map((item) => {
-                        const { x, img, text } = item;
-                        return <UIButton key={text} x={x} hitArea={new Rectangle(0, 0, 88, 110)} interactive={true}>
+                        const { x, img, text, click } = item;
+                        return <UIButton key={text} x={x} hitArea={new Rectangle(0, 0, 88, 110)} click={click}>
                             <AtlasComponents img={img} />
                             <Text x={34} y={67} anchor={[0.5, 0.5]} text={text} style={{ fontSize: "14px", fill: "0xf5f5f5", stroke: "#03283e", strokeThickness: 4 }} />
                         </UIButton>
@@ -89,10 +135,10 @@ const NavUserInfo = React.memo(() => {
 
     return <Container>
         <Container>
-            <Container x={16} y={8}>
-                <Avatar id={user.avatarIndex} x={28} y={28} anchor={[0.5, 0.5]} width={50} height={50} />
+            <UIButton x={16} y={8}>
+                <Avatar avatarId={user.avatarIndex} x={28} y={28} anchor={[0.5, 0.5]} width={50} height={50} />
                 <AtlasComponents img="avatar_frame.png" />
-            </Container>
+            </UIButton>
             <Text x={80} y={23} anchor={[0, 0.5]} text={user.nickName} style={{ fontSize: "24px", fill: "0xf5f5f5" }} />
             <Container x={80 + user.nickName.length * 14} y={11}>
                 <Graphics draw={drawBg_1} />
@@ -128,13 +174,13 @@ const NavUserInfo = React.memo(() => {
 }, () => true)
 
 const TableRoomList = React.memo(() => {
-    const websocket = WebsocketService();
     const tableListMap = useContextSelector(AppContext, (e) => {
         return e.tableListMap;
     });
+    const websocket = WebsocketService();
 
-    function onJoinRoom(actorId: string) {
-        websocket.sender.joinTableConfig(actorId);
+    function onJoinRoom(args) {
+        websocket.sender.joinTableConfig(args);
     }
 
     function getRoomAvailableInfo(func: (e) => TableListConfigItem): [boolean, string] {
@@ -151,7 +197,7 @@ const TableRoomList = React.memo(() => {
             ].map((item) => {
                 const { name, x, y, img, getModel } = item;
                 const [loaded, actorId] = getRoomAvailableInfo(getModel);
-                return <UIButton key={name} interactive={loaded} x={x} y={y} click={onJoinRoom.bind(null, actorId)}>
+                return <UIButton key={name} enable={loaded} x={x} y={y} click={onJoinRoom.bind(null, actorId)}>
                     <AtlasComponents img={img} />
                 </UIButton>
             })
