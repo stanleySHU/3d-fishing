@@ -7,8 +7,7 @@ import { ISceneProps } from '../BaseScene';
 import { useContextSelector } from 'use-context-selector';
 import { AppContext } from '../../model/context/AppProvider';
 import { GameDataSourceProvider } from '../../model/context/GameDataProvider';
-import { FishingPool } from './FishPool';
-import { PlayerLayers } from './PlayerLayers';
+import { FishingPool } from '../../scenes1/game/FishPool';
 import { IMG_3D_BG_URL } from '../assets';
 
 const MyScene = React.memo((props) => {
@@ -23,7 +22,7 @@ const MyScene = React.memo((props) => {
         return () => {
             unRegister();
         }
-    }, []);
+    });
 
     const [width, height, depth, cameraY, fieldOfView] = [96, 54, 72, 27, 1.57],
         multip = ((depth + cameraY) / cameraY),
@@ -37,8 +36,7 @@ const MyScene = React.memo((props) => {
                 <texture url={IMG_3D_BG_URL} />
             </standardMaterial>
         </ground>
-        <FishingPool/>
-        <PlayerLayers/>
+        {/* <FishingPool/> */}
     </>
 }, () => true);
 
@@ -54,7 +52,7 @@ export const GameScene = (props: IGameSceneProps) => {
   
     // return useMemo(() => {
         return <Scene>
-            <GameDataSourceProvider user={user} tableUpdate={tableUpdateMap[actorId]}>
+            <GameDataSourceProvider tableUpdate={tableUpdateMap[actorId]}>
                 <MyScene/>;
             </GameDataSourceProvider>
         </Scene>

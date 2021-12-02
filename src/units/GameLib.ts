@@ -40,7 +40,7 @@ export function roomConfigKey(tableInfo: TableInfoModel) {
 }
 
 export function getSeatExistPlayerArrMap(playerInfoPositionmap: {[key: string]: InSeatPlayerInfoModel}): boolean[] {
-    const res: boolean[] = [];
+    const res: boolean[] = [false, false, false, false];
     for (let key in playerInfoPositionmap) {
         res[key] = !!playerInfoPositionmap[key];
     }

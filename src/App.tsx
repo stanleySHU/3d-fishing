@@ -21,10 +21,6 @@ function App() {
             <LobbyScene id="lobby" />
             <GamePreloadScene id="gamePreload" next="game"/>
             <GameScene id="game"/>
-            {/* <StartUpScene id="startUp" />
-            <LobbyScene id="lobby" />
-            <GamePreloadScene id="gamePreload" next="game" />
-            <GameScene id="game" /> */}
           </NavController>
         </PIXIApp>
       </Engine>

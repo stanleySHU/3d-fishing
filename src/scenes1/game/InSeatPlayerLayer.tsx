@@ -1,7 +1,13 @@
 import { Container } from "@inlet/react-pixi"
+import { useContextSelector } from "use-context-selector";
+import { GameDataSourceContext } from "../../model/context/GameDataProvider";
 import { AtlasGames } from "../assets"
 
 export const InSeatPlayerLayer = (props) => {
+    const [user, playerState] = useContextSelector(GameDataSourceContext, (e) => {
+        return [e.user, e.playerState];
+    });
+    const { playerInfoPositionMap } = playerState;
     return <Container>
         {
             [
@@ -11,7 +17,7 @@ export const InSeatPlayerLayer = (props) => {
                 {x: 606, y: 484, amountY: 18}
             ].map((item, index) => {
                 const { x, y, amountY } = item;
-                return <Container key={`BuyIn${index}`} x={x} y={y}>
+                return !!playerInfoPositionMap[index] && <Container key={`BuyIn${index}`} x={x} y={y}>
                 <AtlasGames img="img_cannon_container_small_up.png" />
                 {/* cannon */}
                 <AtlasGames img="img_cannon_value_container.png" x={25} y={amountY}/>

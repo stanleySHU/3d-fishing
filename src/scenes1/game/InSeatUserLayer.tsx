@@ -3,62 +3,77 @@ import { Graphics as pixiGraphics } from 'pixi.js';
 import { AtlasGames } from "../assets"
 import { Avatar } from '../../components/pixi/Avatar';
 import { PropsWithChildren, useCallback, useRef } from "react";
+import { Chip } from '../../components/pixi/Chip';
+import { useContextSelector } from "use-context-selector";
+import { GameDataSourceContext } from "../../model/context/GameDataProvider";
 
 export const InSeatUserLayer = (props) => {
-    return <Container>
-        <Container>
-            <Container x={122} y={47} >
-                <AtlasGames img="img_avatar_container.png" scale={[1, -1]} anchor={[0, 1]} />
-                <GameAvatar avatarId={0} x={7} y={6} />
+    const [user, playerState] = useContextSelector(GameDataSourceContext, (e) => {
+        return [e.user, e.playerState];
+    });
+    const userInfo = playerState.playerInfoUserIdMap[user.id];
+    return !!userInfo && <Container>
+        {
+            userInfo.position == 0 && <Container>
+                <Container x={122} y={47} >
+                    <AtlasGames img="img_avatar_container.png" scale={[1, -1]} anchor={[0, 1]} />
+                    <GameAvatar avatarId={0} x={7} y={6} />
+                </Container>
+                <PlayerInfoContainer x={74} y={5}>
+                    <PlayerNameText x={86} y={34} text='stanley001' />
+                    <PlayerBalanceContainer x={41} y={4} amount={0} />
+                </PlayerInfoContainer>
+                <FortContainer x={250} y={-16}>
+                    <CannonAmount x={58} y={26} amount={1000} />
+                </FortContainer>
             </Container>
-            <PlayerInfoContainer x={74} y={5}>
-                <PlayerNameText x={86} y={34} text='stanley001' />
-                <PlayerBalanceContainer x={41} y={4} amount={0}/>
-            </PlayerInfoContainer>
-            <FortContainer x={250} y={-16}>
-                <CannonAmount x={58} y={26} amount={1000} />
-            </FortContainer>
-        </Container>
-        <Container>
-            <Container x={816} y={47} >
-                <AtlasGames img="img_avatar_container.png" scale={[1, -1]} anchor={[0, 1]} />
-                <GameAvatar avatarId={0} x={7} y={6} />
+        }
+        {
+            userInfo.position == 1 && <Container>
+                <Container x={816} y={47} >
+                    <AtlasGames img="img_avatar_container.png" scale={[1, -1]} anchor={[0, 1]} />
+                    <GameAvatar avatarId={0} x={7} y={6} />
+                </Container>
+                <PlayerInfoContainer x={767} y={5}>
+                    <PlayerNameText x={86} y={34} text='stanley002' />
+                    <PlayerBalanceContainer x={41} y={4} amount={0} />
+                </PlayerInfoContainer>
+                <FortContainer x={576} y={-16}>
+                    <CannonAmount x={58} y={26} amount={1000} />
+                </FortContainer>
             </Container>
-            <PlayerInfoContainer x={767} y={5}>
-                <PlayerNameText x={86} y={34} text='stanley002' />
-                <PlayerBalanceContainer x={41} y={4} amount={0}/>
-            </PlayerInfoContainer>
-            <FortContainer x={576} y={-16}>
-                <CannonAmount x={58} y={26} amount={1000} />
-            </FortContainer>
-        </Container>
-        <Container>
-            <Container x={122} y={422} >
-                <AtlasGames img="img_avatar_container.png" />
-                <GameAvatar avatarId={0} x={7} y={4} />
+        }
+        {
+            userInfo.position == 2 && <Container>
+                <Container x={122} y={422} >
+                    <AtlasGames img="img_avatar_container.png" />
+                    <GameAvatar avatarId={0} x={7} y={4} />
+                </Container>
+                <PlayerInfoContainer x={74} y={492}>
+                    <PlayerNameText x={86} y={10} text='stanley003' />
+                    <PlayerBalanceContainer x={41} y={17} amount={0} />
+                </PlayerInfoContainer>
+                <FortContainer x={250} y={484}>
+                    <CannonAmount x={58} y={15} amount={1000} />
+                </FortContainer>
             </Container>
-            <PlayerInfoContainer x={74} y={492}>
-                <PlayerNameText x={86} y={10} text='stanley003' />
-                <PlayerBalanceContainer x={41} y={17} amount={0}/>
-            </PlayerInfoContainer>
-            <FortContainer x={250} y={484}>
-                <CannonAmount x={58} y={15} amount={1000} />
-            </FortContainer>
-        </Container>
-        <Container>
-            <Container x={816} y={422} >
-                <AtlasGames img="img_avatar_container.png" />
-                <GameAvatar avatarId={0} x={7} y={4} />
+        }
+        {
+            userInfo.position == 3 && <Container>
+                <Container x={816} y={422} >
+                    <AtlasGames img="img_avatar_container.png" />
+                    <GameAvatar avatarId={0} x={7} y={4} />
+                </Container>
+                <PlayerInfoContainer x={767} y={492}>
+                    <PlayerNameText x={86} y={10} text='stanley004' />
+                    <PlayerBalanceContainer x={41} y={17} amount={0} />
+                </PlayerInfoContainer>
+                <FortContainer x={576} y={484}>
+                    <CannonAmount x={58} y={15} amount={1000} />
+                </FortContainer>
             </Container>
-            <PlayerInfoContainer x={767} y={492}>
-                <PlayerNameText x={86} y={10} text='stanley004' />
-                <PlayerBalanceContainer x={41} y={17} amount={0}/>
-            </PlayerInfoContainer>
-            <FortContainer x={576} y={484}>
-                <CannonAmount x={58} y={15} amount={1000} />
-            </FortContainer>
-        </Container>
-    </Container>
+        }
+    </Container >
 }
 
 export const PlayerInfoContainer = (props: PropsWithChildren<_ReactPixi.IContainer>) => {
@@ -86,7 +101,8 @@ export const PlayerBalanceContainer = (props: _ReactPixi.IContainer & { amount: 
 
     return <Container {...props}>
         <Graphics draw={drawBalanceFrame} />
-        <Text x={44} y={10} text={`${props.amount}`} anchor={[0.5, 0.5]} style={{ fontSize: "13px", fill: "0xe1ab16", stroke: "#552c13", strokeThickness: 2 }}/>
+        <Text x={44} y={10} text={`${props.amount}`} anchor={[0.5, 0.5]} style={{ fontSize: "13px", fill: "0xe1ab16", stroke: "#552c13", strokeThickness: 2 }} />
+        <Chip type='fish' y={0.5} width={20} height={20} />
     </Container>
 }
 

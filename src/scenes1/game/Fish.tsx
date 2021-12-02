@@ -17,7 +17,7 @@ export const Fish = (props: IFishProps) => {
     const [instance, setInstance] = useState<TransformNode>(null);
     const [animationMap, setAnimationMap] = useState<{ [key: string]: AnimationGroup }>({});
 
-    const taskName = `taskFish${props.fishType}`;
+    const taskName = `taskFish${2000||props.fishType}`;
     const task: ContainerTask = {
         taskType: TaskType.Container,
         name: taskName,
@@ -30,36 +30,35 @@ export const Fish = (props: IFishProps) => {
     
     useEffect(() => {
         if (!instance) {
-            // const task: ContainerAssetTask = result.taskNameMap[taskName] as ContainerAssetTask;
-            // const entries = task.loadedContainer.instantiateModelsToScene((name) => {
-            //     return `${props.name}_${name}`
-            // });
+            const task: ContainerAssetTask = result.taskNameMap[taskName] as ContainerAssetTask;
+            const entries = task.loadedContainer.instantiateModelsToScene((name) => {
+                return `${props.name}_${name}`
+            });
 
-            // const map = {};
-            // entries.animationGroups.forEach((value) => {
-            //     map[value.name] = value;
-            // });
+            const map = {};
+            entries.animationGroups.forEach((value) => {
+                map[value.name] = value;
+            });
 
-            // setInstance(entries.rootNodes[0]);
-            // setAnimationMap(map);
+            setInstance(entries.rootNodes[0]);
+            setAnimationMap(map);
         }
     }, [result]);
 
     useEffect(() => {
         if (instance) {
-            // console.log(animationMap)
             animationMap['Swim'].start(true);
         }
     }, [instance]);
 
     const meshes = (result.taskNameMap[taskName] as ContainerAssetTask).loadedMeshes as Mesh[];
     const realMeshes = [...meshes].splice(1, meshes.length - 1);
-    return <transformNode {...props}>
-            {
-                realMeshes.map(mesh => {
-                    return <instancedMesh key={mesh.name} name={mesh.name} source={mesh}/>  
-                })
-            }
-        </transformNode>
-    // return instance && <transformNode fromInstance={instance} {...props} />;
+    // return <transformNode {...props}>
+    //         {
+    //             realMeshes.map(mesh => {
+    //                 return <instancedMesh key={mesh.name} name={mesh.name} source={mesh} disposeInstanceOnUnmount={true} />  
+    //             })
+    //         }
+    //     </transformNode>
+    return instance && <transformNode fromInstance={instance} {...props} disposeInstanceOnUnmount={true}/>;
 }

@@ -35,11 +35,14 @@ export const LobbyScene = (props: ISceneProps) => {
     }
 
     useEffect(() => {
-        websocket.sender.joinP2PGame('FISH');
         const unRegister = websocket.register(agent);
         return () => {
             unRegister();
         }
+    })
+
+    useEffect(() => {
+        websocket.sender.joinP2PGame('FISH');
     }, []);
 
     return <ViewController>

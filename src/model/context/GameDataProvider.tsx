@@ -5,31 +5,29 @@ import { BulletHitFishBroadCastModel } from "../socket/BulletHitFishBroadCastMod
 import { ChangeSeatBroadCastModel } from "../socket/ChangeSeatBroadCastModel";
 import { FireBulletBroadCastModel } from "../socket/FireBulletBroadCastModel";
 import { NewFishNoticeModel } from "../socket/NewFishNoticeModel";
-import { createContext } from 'use-context-selector';
-import { initialState as initialState_fishPool, reducer as reducer_fishPool, InitialState as FishPoolInitialState, NewFishNoticeAction, NewFramesAction, NewStageAction} from "../store/FishPool";
+import { createContext, useContextSelector } from 'use-context-selector';
+import { initialState as initialState_fishPool, reducer as reducer_fishPool, InitialState as FishPoolInitialState, NewFishNoticeAction, NewFramesAction, NewStageAction } from "../store/FishPool";
 import { initialState as initialState_playerInfos, reducer as reducer_playerInfos, InitialState as PlayerInfosInitialState, PlayerJoinTableAction } from '../store/PlayerInfos';
-import { InSeatPlayerInfoModel, TableInfoModel, TableUpdateModel } from "../socket/TableUpdateModel";
-import { PlayerInfoModel } from "../socket/PlayerInfoModel";
+import { TableInfoModel, TableUpdateModel } from "../socket/TableUpdateModel";
 import { PlayerJoinTableModel } from "../socket/PlayerJoinTableModel";
+import { AppContext, IAppContextOptions } from "./AppProvider";
 
 type IGameDataSourceProps = {
     children: ReactNode,
-    user: PlayerInfoModel,
     tableUpdate: TableUpdateModel
 }
 
-type IFishPoolContext = {
+export type IGameDataContext = {
     poolState: FishPoolInitialState,
     actorId: string,
-    user: PlayerInfoModel,
     tableInfo: TableInfoModel,
     playerState: PlayerInfosInitialState
-}
+} & IAppContextOptions;
 
-export const LobbyDataSourceContext = createContext<IFishPoolContext>({} as any);
+export const GameDataSourceContext = createContext<IGameDataContext>({} as any);
 
 export const GameDataSourceProvider = (props: IGameDataSourceProps) => {
-    const { user, tableUpdate } = props;
+    const { tableUpdate } = props;
     const [poolState, poolDispath] = useReducer(reducer_fishPool, initialState_fishPool);
     const [playerState, playerDispatch] = useReducer(reducer_playerInfos, Object.assign(initialState_playerInfos, (() => {
         const userIdMap = {};
@@ -43,12 +41,15 @@ export const GameDataSourceProvider = (props: IGameDataSourceProps) => {
             playerInfoPositionMap: tableUpdate.seatedPlayersMap
         } as PlayerInfosInitialState
     })()));
+    const appContext = useContextSelector(AppContext, (e) => {
+        return e;
+    });
 
     const websocket = WebsocketService();
     const agent = {
         handlePlayerJoinTable: (model: MessageModel<PlayerJoinTableModel>) => {
             const content = model.messageContent;
-            playerDispatch(PlayerJoinTableAction(content));
+            playerDispatch(PlayerJoinTableAction(content));  
         },
         handleNewFishNotice: (model: MessageModel<NewFishNoticeModel>) => {
             const content = model.messageContent;
@@ -65,29 +66,32 @@ export const GameDataSourceProvider = (props: IGameDataSourceProps) => {
 
         },
         handleChangeSeatBroadCast: (model: MessageModel<ChangeSeatBroadCastModel>) => {
-
+            
         }
-
     };
-
     useEffect(() => {
         const unRegister = websocket.register(agent);
-        const frameTimer = setInterval(() => {
-            poolDispath(NewFramesAction());
-        }, 1000/30);
         return () => {
             unRegister();
+        }
+    })
+
+    useEffect(() => {
+        const frameTimer = setInterval(() => {
+            poolDispath(NewFramesAction());
+        }, 1000 / 30);
+        return () => {
             clearInterval(frameTimer);
         }
     }, []);
 
-    return <LobbyDataSourceContext.Provider value={{
-        poolState: poolState, 
-        actorId: tableUpdate.actorId, 
-        user: user, 
+    return <GameDataSourceContext.Provider value={{
+        poolState: poolState,
+        actorId: tableUpdate.actorId,
         tableInfo: tableUpdate.tableInfo,
-        playerState: playerState
-        }}>
+        playerState: playerState,
+        ...appContext
+    }}>
         {props.children}
-    </LobbyDataSourceContext.Provider>;
+    </GameDataSourceContext.Provider>;
 }

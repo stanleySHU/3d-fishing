@@ -11,10 +11,13 @@ type IPIXIProps = {
 
 export const PIXIApp = (props: PropsWithChildren<IPIXIProps>) => {
     const [stage2D, setStage2D] = useState<pixiContainer>(null);
+    const [stage2DBg, setStage2DBg] = useState<pixiContainer>(null);
 
     useEffect(() => {
         const stage = new pixiContainer();
+        const stageBg = new pixiContainer();
         setStage2D(stage);
+        setStage2DBg(stageBg);
 
         const reactBablonjsEngine = props.reactBablonjsEngineRef.current,
             engine: babylonjsEngine = (reactBablonjsEngine as any).engine,
@@ -35,6 +38,7 @@ export const PIXIApp = (props: PropsWithChildren<IPIXIProps>) => {
 
         const beforeRenderObservable = reactBablonjsEngine.onBeforeRenderLoopObservable.add((e) => {
             pixiRenderer.reset();
+            pixiRenderer.render(stageBg);
         });
 
         const endRenderObservable = reactBablonjsEngine.onEndRenderLoopObservable.add((e) => {
@@ -49,22 +53,24 @@ export const PIXIApp = (props: PropsWithChildren<IPIXIProps>) => {
         }
     }, []);
 
-    return stage2D && <ReactPixiAppProvider stage2D={stage2D}>
+    return stage2D && stage2DBg && <ReactPixiAppProvider stage2D={stage2D} stage2DBg={stage2DBg}>
         {props.children}
     </ReactPixiAppProvider>;
 }
 
 //provider
 type IReactPixiAppProviderProps = {
-    stage2D: pixiContainer
+    stage2D: pixiContainer,
+    stage2DBg: pixiContainer
 }
 type IReactPixiAppContextOptions = {
-    stage2D: pixiContainer
+    stage2D: pixiContainer,
+    stage2DBg: pixiContainer
 };
 export const ReactPixiAppContext = createContext<IReactPixiAppContextOptions>({} as any);
 const ReactPixiAppProvider = (props: PropsWithChildren<IReactPixiAppProviderProps>) => {
-    const { stage2D } = props;
-    return <ReactPixiAppContext.Provider value={{ stage2D: stage2D }}>
+    const { stage2D, stage2DBg } = props;
+    return <ReactPixiAppContext.Provider value={{ stage2D: stage2D, stage2DBg: stage2DBg }}>
         {props.children}
     </ReactPixiAppContext.Provider>
 }

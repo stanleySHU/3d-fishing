@@ -38,7 +38,8 @@ export const AppContextProvider = (props: { children: React.ReactNode }) => {
 
         },
         handlePlayerInfo: (model: MessageModel<PlayerInfoModel>) => {
-            setUser(model.messageContent);
+            let content = model.messageContent;
+            setUser(content)
         },
         handleRoomList: (model: MessageModel<RoomListModel>) => {
             let content = model.messageContent;
@@ -70,7 +71,7 @@ export const AppContextProvider = (props: { children: React.ReactNode }) => {
         return () => {
             unRegister();
         }
-    }, []);
+    });
 
     return <AppContext.Provider value={{
         user: user,

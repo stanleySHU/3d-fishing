@@ -1,3 +1,4 @@
+import { ChangeSeatBroadCastModel } from "../socket/ChangeSeatBroadCastModel";
 import { PlayerJoinTableModel } from "../socket/PlayerJoinTableModel";
 import { InSeatPlayerInfoModel } from "../socket/TableUpdateModel";
 
@@ -11,7 +12,7 @@ export const initialState: InitialState = {
     playerInfoUserIdMap: {}
 }
 
-type IActionType = 'playerJoinTable';
+type IActionType = 'playerJoinTable' | 'changeSeatBroadCast';
 
 export type Action = {
     type: IActionType,
@@ -24,6 +25,9 @@ export const reducer = (state: InitialState, action: Action): InitialState => {
     switch(action.type) {
         case 'playerJoinTable': {
             return {...handlePlayerJoinTable(state, action)}
+        }
+        case 'changeSeatBroadCast': {
+            return {...handleChangeSeatBroadCast(state, action)}
         }
         default: {
 
@@ -44,9 +48,24 @@ export const PlayerJoinTableAction = (model: PlayerJoinTableModel): Action => {
 function handlePlayerJoinTable(state: InitialState, action: Action) {
     const { playerInfoPositionMap, playerInfoUserIdMap } = state;
     const [ playerInfoModel, position ] = action.payload.model as PlayerJoinTableModel;
-
     playerInfoPositionMap[position] = playerInfoModel;
     playerInfoUserIdMap[playerInfoModel.userId] = playerInfoModel;
+    return state;
+}
 
+function handleChangeSeatBroadCast(state: InitialState, action: Action) {
+    const { playerInfoPositionMap, playerInfoUserIdMap } = state;
+    const model = action.payload.model as ChangeSeatBroadCastModel;
+
+    let playerInfo = playerInfoUserIdMap[model.playerId];
+    if (playerInfo) {
+        delete playerInfoPositionMap[playerInfo.position];
+        playerInfo = {
+            ...playerInfo,
+            position: model.position
+        }
+        playerInfoPositionMap[model.position] = playerInfo;
+        playerInfoPositionMap[model.playerId] = playerInfo;
+    }
     return state;
 }

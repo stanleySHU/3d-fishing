@@ -26,20 +26,20 @@ export type Action = {
 };
 
 export const reducer = (state: InitialState, action: Action): InitialState => {
-    // switch (action.type) {
-    //     case 'newFrames': {
-    //         return {...handleNewFrames(state, action)};
-    //     }
-    //     case 'newStage': {
-    //         return state;
-    //     }
-    //     case 'newFish': {   
-    //         return handleNewFish(state, action);
-    //     }
-    //     default: {
+    switch (action.type) {
+        case 'newFrames': {
+            return handleNewFrames(state, action);
+        }
+        case 'newStage': {
+            return state;
+        }
+        case 'newFish': {   
+            return handleNewFish(state, action);
+        }
+        default: {
 
-    //     }
-    // }
+        }
+    }
     return state;
 }
 

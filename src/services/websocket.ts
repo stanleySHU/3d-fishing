@@ -32,10 +32,13 @@ const createWebsocket = () => {
 
     const onmessage = (event: MessageEvent) => {
         let data: MessageModel = JSON.parse(event.data)[0];
-        for (let agent of agents) {
-            let handleName = `handle${firstUpperCase(data.messageCode)}`;
-            agent[handleName] && agent[handleName](data);
-        }
+        let handleName = `handle${firstUpperCase(data.messageCode)}`;
+
+        agents.filter((agent) => {
+            return !!agent[handleName]
+        }).forEach((agent) => {
+            agent[handleName](data)
+        });
     }
 
     const connect = () => {

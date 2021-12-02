@@ -14,13 +14,13 @@ type ILoadingSceneProps = ISceneProps & {
 }
 
 const MyScene = React.memo((props: ILoadingSceneProps) => {
-    const { next, children } = props;
+    const { next, args } = props;
     const [loaded, setLoaded] = useState(false);
     const SceneManager = useContextSelector(NavContext, e => e.SceneManager);
 
     useEffect(() => {
         if (loaded && next) {
-            SceneManager(Replace(next, props.args))
+            SceneManager(Replace(next, args))
         }
     }, [next, loaded]);
 
@@ -48,7 +48,8 @@ export const StartUpScene = (props: ILoadingSceneProps) => {
     const agent = {
         handlePlayerInfo: () => {
             setNext('lobby');
-        }, handleNewPlayer: () => {
+        }, 
+        handleNewPlayer: () => {
             setNext('newPlayerInit')
         }
     }
@@ -58,7 +59,7 @@ export const StartUpScene = (props: ILoadingSceneProps) => {
         return () => {
             unRegister();
         }
-    }, []);
+    });
 
     return <MyScene {...props} next={next}>
         <Task name={ATLAS_AVATARS} src={ATLAS_AVATARS_URL} />
@@ -69,8 +70,8 @@ export const StartUpScene = (props: ILoadingSceneProps) => {
     </MyScene>;
 }
 
-export const GamePreloadScene = (props: ILoadingSceneProps) => {
-    return <MyScene {...props}>
+export const GamePreloadScene = (props) => {
+    return <MyScene {...props} args={{actorId: props.actorId}}>
         <Task name={ATLAS_GAMES} src={ATLAS_GAMES_URL} />
         <RunTask />
     </MyScene>;

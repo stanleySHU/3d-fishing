@@ -6,6 +6,7 @@ import { IBuyInCashType } from "../../units/customType";
 import { Decimal } from 'decimal.js';
 import { UIButton } from "../../components/pixi/Button";
 import { AtlasGames } from "../assets";
+import { Container } from "@inlet/react-pixi";
 
 type IBuyInProps = {
     actorId: string,
@@ -35,11 +36,14 @@ const BuyInHOC = (EL: React.FC<PropsWithChildren<IBuyInProps>>) => {
         }, [position]);
     
         useEffect(() => {
-            websocket.sender.requestBuyinRange(actorId);
             const unRegister = websocket.register(agent);
             return () => {
                 unRegister();
             }
+        });
+
+        useEffect(() => {
+            websocket.sender.requestBuyinRange(actorId);
         }, []);
     
         return <EL {...props} setPosition={setPosition}/>;
@@ -48,22 +52,22 @@ const BuyInHOC = (EL: React.FC<PropsWithChildren<IBuyInProps>>) => {
 
 const BuyInLayer = (props: PropsWithChildren<IBuyInProps>) => {
     const { setPosition, inSeatPlayerPosition } = props;
-    return <container>
+    return <Container>
         {
             [
-                { x: 228, y: -16 },
-                { x: 648, y: -16 },
-                { x: 228, y: 484 },
-                { x: 648, y: 484 }
+                { x: 282, y: -16, addY: 18 },
+                { x: 606, y: -16, addY: 18 },
+                { x: 282, y: 484, addY: 0 },
+                { x: 606, y: 484, addY: 0 }
             ].map((item, index) => {
-                const { x, y } = item;
+                const { x, y, addY } = item;
                 return !inSeatPlayerPosition[index] && <UIButton key={`BuyIn${index}`} x={x} y={y} click={setPosition.bind(null, index)}>
                     <AtlasGames img="img_cannon_container_small_up.png" />
-                    <AtlasGames img="btn_join.png"  />
+                    <AtlasGames img="btn_join.png" x={32} y={addY}/>
                 </UIButton>
             })
         }
-    </container>
+    </Container>
 }
 
 export const BuyIn = BuyInHOC(BuyInLayer);

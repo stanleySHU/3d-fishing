@@ -37,7 +37,7 @@ const BlendPath = (): BasePath => {
 
 const PATH_MAP: { [key: string | number]: BasePath } = (() => {
     let map = {};
-    for (let i = 1000; i <= 1100; i++) {
+    for (let i = 1000; i <= 2000; i++) {
         map[i] = SimplePath(randomStraight(96, 54, 72, 27));
     }
     return map;
