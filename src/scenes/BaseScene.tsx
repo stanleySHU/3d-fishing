@@ -8,7 +8,8 @@ import { GameDataSourceContext } from '../model/context/GameDataProvider';
 
 export type ISceneProps = PropsWithChildren<{
     id: string,
-    next?: string
+    next?: string,
+    args?: any
 }>
 
 type IViewControllerProps = {

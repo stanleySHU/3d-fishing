@@ -14,7 +14,7 @@ function App() {
   return (
     <AppContextProvider>
       <Auth />
-      <Engine ref={engineRef} antialias adaptToDeviceRatio canvasId='Game' width={960} height={540}>
+      <Engine ref={engineRef} antialias adaptToDeviceRatio canvasId='Game' width={960} height={540} >
         <PIXIApp reactBablonjsEngineRef={engineRef}>
           <NavController enter="startUp">
             <StartUpScene id="startUp" next="lobby"/>

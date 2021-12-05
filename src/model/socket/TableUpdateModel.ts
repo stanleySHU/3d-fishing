@@ -29,6 +29,8 @@ export interface InSeatPlayerInfoModel {
     readonly state: IInGameState;
     readonly away: boolean;
     readonly buyInCashType: IBuyInCashType;
+}
+export interface InSeatPlayerInfoWithPositionModel extends InSeatPlayerInfoModel {
     readonly position: number;
 }
 

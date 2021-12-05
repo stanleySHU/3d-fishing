@@ -1,19 +1,17 @@
 import { Container, Sprite } from "@inlet/react-pixi";
 import React, { PropsWithChildren, useEffect, useState } from "react";
 import { ISceneProps, ViewController } from "../scenes/BaseScene";
-import { AssetManager, Task, RunTask } from '../loaders/pixi/AssetManager';
-import { ATLAS_AVATARS, ATLAS_AVATARS_URL, ATLAS_COINS, ATLAS_COINS_URL, ATLAS_FLAGS, ATLAS_FLAGS_URL, ATLAS_COMPONENTS, ATLAS_COMPONENTS_URL, ATLAS_GAMES, ATLAS_GAMES_URL } from './assets';
+import { AssetManager, Task, SpineTask, RunTask, useAssetsManager } from '../loaders/pixi/AssetManager';
+import { ATLAS_AVATARS, ATLAS_AVATARS_URL, ATLAS_COINS, ATLAS_COINS_URL, ATLAS_FLAGS, ATLAS_FLAGS_URL, ATLAS_COMPONENTS, ATLAS_COMPONENTS_URL, ATLAS_GAMES, ATLAS_GAMES_URL,
+    ATLAS_BULLET, ATLAS_BULLET_URL,
+    JSON_CANNON_LV0_URL, JSON_CANNON_LV1_URL, JSON_CANNON_LV2_URL, ATLAS_CANNON_LV0, ATLAS_CANNON_LV0_URL, ATLAS_CANNON_LV1, ATLAS_CANNON_LV1_URL, ATLAS_CANNON_LV2, ATLAS_CANNON_LV2_URL} from './assets';
 import { PreloadView2D } from "../components/PreloadView";
 import { useContextSelector } from "use-context-selector";
 import { NavContext } from "../scenes/NavController";
 import { Replace } from "../model/store/NavController";
 import { WebsocketService } from '../services/websocket';
 
-type ILoadingSceneProps = ISceneProps & {
-    args?: any
-}
-
-const MyScene = React.memo((props: ILoadingSceneProps) => {
+const MyScene = React.memo((props: ISceneProps) => {
     const { next, args } = props;
     const [loaded, setLoaded] = useState(false);
     const SceneManager = useContextSelector(NavContext, e => e.SceneManager);
@@ -41,7 +39,7 @@ const MyScene = React.memo((props: ILoadingSceneProps) => {
 });
 
 
-export const StartUpScene = (props: ILoadingSceneProps) => {
+export const StartUpScene = (props: ISceneProps) => {
     const [next, setNext] = useState(null);
 
     const websocket = WebsocketService();
@@ -70,9 +68,15 @@ export const StartUpScene = (props: ILoadingSceneProps) => {
     </MyScene>;
 }
 
-export const GamePreloadScene = (props) => {
-    return <MyScene {...props} args={{actorId: props.actorId}}>
+export const GamePreloadScene = (props: ISceneProps) => {
+    const resourceMap = useAssetsManager();
+    return <MyScene {...props} args={props.args}>
         <Task name={ATLAS_GAMES} src={ATLAS_GAMES_URL} />
+        <Task name={ATLAS_BULLET} src={ATLAS_BULLET_URL} />
+
+        <SpineTask name={ATLAS_CANNON_LV0} src={JSON_CANNON_LV0_URL} filePath={ATLAS_CANNON_LV0_URL} />
+        <SpineTask name={ATLAS_CANNON_LV1} src={JSON_CANNON_LV1_URL} filePath={ATLAS_CANNON_LV1_URL} />
+        <SpineTask name={ATLAS_CANNON_LV2} src={JSON_CANNON_LV2_URL} filePath={ATLAS_CANNON_LV2_URL} />
         <RunTask />
     </MyScene>;
 }

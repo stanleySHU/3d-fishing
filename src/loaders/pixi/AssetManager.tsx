@@ -1,5 +1,9 @@
+import '@pixi-spine/runtime-3.7';
+import '@pixi-spine/base'
+import 'pixi-spine/dist/pixi-spine.umd'
+
 import React, { PropsWithChildren, ReactElement, useEffect, useState } from "react";
-import { Loader, LoaderResource } from 'pixi.js';
+import { Loader, LoaderResource, IAddOptions } from 'pixi.js';
 import { IPreloadViewProps } from "../../components/PreloadView";
 
 type IAssetManagerProps = {
@@ -11,7 +15,13 @@ type IAssetManagerProps = {
 
 type ITaskProps = {
     name: string,
-    src: string
+    src: string,
+    options?: IAddOptions
+}
+
+type ISpineTaskProps = ITaskProps & {
+    filePath?: string,
+    dataPath?: string
 }
 
 let taskMap: { [taskName: string]: any } = {};
@@ -20,25 +30,25 @@ let retryTasks: { [taskName: string]: any } = {};
 let retryCount: number = 0;
 
 const loader = Loader.shared;
-loader.pre(cachingMiddleware);
-loader.use(parsingMiddleware);
+// loader.pre(cachingMiddleware);
+// loader.use(parsingMiddleware);
 
-function cachingMiddleware(e: LoaderResource, next) {
-    next();
-}
+// function cachingMiddleware(e: LoaderResource, next) {
+//     next();
+// }
 
-function parsingMiddleware(e: LoaderResource, next) {
-    next();
-}
+// function parsingMiddleware(e: LoaderResource, next) {
+//     next();
+// }
 
 function addTask(e: ITaskProps) {
-    const { name, src } = e;
+    const { name, src, options } = e;
     const resource = resourceMap[name];
     if (!resource) {
         const handle = () => {
-            loader.add(name, src, {
-                timeout: 15 * 1000
-            });
+            loader.add(name, src, Object.assign({
+                timeout: 15 * 1000,
+            }, options));
         }
         handle();
         taskMap[name] = handle;
@@ -110,7 +120,7 @@ export const AssetManager = (props: PropsWithChildren<IAssetManagerProps>) => {
 };
 
 export const Task = (props: ITaskProps) => {
-    const { name, src } = props;
+    const { name } = props;
 
     const onLoad = (e: Loader, resource: LoaderResource) => {
         if (resource.name == name) {
@@ -126,6 +136,36 @@ export const Task = (props: ITaskProps) => {
         }
     }, []);
     return null;
+}
+
+//https://github.com/pixijs/spine/blob/master/examples/preload_atlas_text.md
+export const SpineTask = (props: ISpineTaskProps) => {
+    const { filePath, dataPath } = props;
+    const resourceMap = useAssetsManager();
+    function LoaderAdapter(loader, namePrefix, baseUrl, imageOptions) {
+        console.log(loader, namePrefix, baseUrl, imageOptions)
+
+        if (baseUrl && baseUrl.lastIndexOf('/') !== baseUrl.length - 1) {
+            baseUrl += '/';
+        }
+      
+        return function (line, callback) {
+            console.log(line);
+            callback(null);
+        }
+    }
+    
+    const sourceOptions = {
+        // imageLoader: LoaderAdapter
+    }
+    return (
+        (dataPath && <Task {...props} options={{metadata: Object.assign({
+            atlasRawData: resourceMap[dataPath].data
+        }, sourceOptions)}}/>) ||
+        (filePath && <Task {...props} options={{metadata: Object.assign({
+            spineAtlasFile: filePath
+        }, sourceOptions)}}/>)
+    )
 }
 
 export const RunTask = () => {

@@ -6,9 +6,9 @@ import { ChangeSeatBroadCastModel } from "../socket/ChangeSeatBroadCastModel";
 import { FireBulletBroadCastModel } from "../socket/FireBulletBroadCastModel";
 import { NewFishNoticeModel } from "../socket/NewFishNoticeModel";
 import { createContext, useContextSelector } from 'use-context-selector';
-import { initialState as initialState_fishPool, reducer as reducer_fishPool, InitialState as FishPoolInitialState, NewFishNoticeAction, NewFramesAction, NewStageAction } from "../store/FishPool";
-import { initialState as initialState_playerInfos, reducer as reducer_playerInfos, InitialState as PlayerInfosInitialState, PlayerJoinTableAction } from '../store/PlayerInfos';
-import { TableInfoModel, TableUpdateModel } from "../socket/TableUpdateModel";
+import { initialState as initialState_fishPool, reducer as reducer_fishPool, InitialState as FishPoolInitialState, NewFishNoticeAction, NewFramesAction, NewStageAction,  } from "../store/FishPool";
+import { initialState as initialState_playerInfos, reducer as reducer_playerInfos, InitialState as PlayerInfosInitialState, PlayerJoinTableAction, ChangeSeatBroadCastAction } from '../store/PlayerInfos';
+import { InSeatPlayerInfoWithPositionModel, TableInfoModel, TableUpdateModel } from "../socket/TableUpdateModel";
 import { PlayerJoinTableModel } from "../socket/PlayerJoinTableModel";
 import { AppContext, IAppContextOptions } from "./AppProvider";
 
@@ -30,15 +30,19 @@ export const GameDataSourceProvider = (props: IGameDataSourceProps) => {
     const { tableUpdate } = props;
     const [poolState, poolDispath] = useReducer(reducer_fishPool, initialState_fishPool);
     const [playerState, playerDispatch] = useReducer(reducer_playerInfos, Object.assign(initialState_playerInfos, (() => {
-        const userIdMap = {};
+        const userIdMap: { [userId: number]: InSeatPlayerInfoWithPositionModel } = {}, positionMap: { [userId: number]: InSeatPlayerInfoWithPositionModel } = {};
         for (let position in tableUpdate.seatedPlayersMap) {
-            let info = tableUpdate.seatedPlayersMap[position];
+            let info = {
+                position: Number(position),
+                ...tableUpdate.seatedPlayersMap[position]
+            };
+            positionMap[position] = info;
             userIdMap[info.userId] = info;
         }
 
         return {
             playerInfoUserIdMap: userIdMap,
-            playerInfoPositionMap: tableUpdate.seatedPlayersMap
+            playerInfoPositionMap: positionMap
         } as PlayerInfosInitialState
     })()));
     const appContext = useContextSelector(AppContext, (e) => {
@@ -66,7 +70,8 @@ export const GameDataSourceProvider = (props: IGameDataSourceProps) => {
 
         },
         handleChangeSeatBroadCast: (model: MessageModel<ChangeSeatBroadCastModel>) => {
-            
+            const content = model.messageContent;
+            playerDispatch(ChangeSeatBroadCastAction(content));
         }
     };
     useEffect(() => {

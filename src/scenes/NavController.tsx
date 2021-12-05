@@ -30,9 +30,10 @@ export const NavController = (props: INavControllerProps) => {
     return <NavContext.Provider value={{ SceneManager: dispatch }}>
         {
             state.scenes.map(e => {
-                return React.cloneElement(sceneNodeMap.current[e.id], {
-                    ...e.args,
-                    key: e.id
+                const {id, args} = e;
+                return React.cloneElement(sceneNodeMap.current[id], {
+                    args: args,
+                    key: id
                 });
             })
         }

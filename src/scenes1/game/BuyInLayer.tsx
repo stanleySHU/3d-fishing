@@ -7,6 +7,7 @@ import { Decimal } from 'decimal.js';
 import { UIButton } from "../../components/pixi/Button";
 import { AtlasGames } from "../assets";
 import { Container } from "@inlet/react-pixi";
+import { Rectangle } from "@pixi/math";
 
 type IBuyInProps = {
     actorId: string,
@@ -28,13 +29,13 @@ const BuyInHOC = (EL: React.FC<PropsWithChildren<IBuyInProps>>) => {
                 websocket.sender.joinRegularTable(actorId, buyInAmount, position, buyInCurrency);
             }
         }
-    
+
         useEffect(() => {
             if (userInSeat) {
                 websocket.sender.changeSeatIn(actorId, position);
             }
         }, [position]);
-    
+
         useEffect(() => {
             const unRegister = websocket.register(agent);
             return () => {
@@ -45,8 +46,8 @@ const BuyInHOC = (EL: React.FC<PropsWithChildren<IBuyInProps>>) => {
         useEffect(() => {
             websocket.sender.requestBuyinRange(actorId);
         }, []);
-    
-        return <EL {...props} setPosition={setPosition}/>;
+
+        return <EL {...props} setPosition={setPosition} />;
     }
 }
 
@@ -61,10 +62,17 @@ const BuyInLayer = (props: PropsWithChildren<IBuyInProps>) => {
                 { x: 606, y: 484, addY: 0 }
             ].map((item, index) => {
                 const { x, y, addY } = item;
-                return !inSeatPlayerPosition[index] && <UIButton key={`BuyIn${index}`} x={x} y={y} click={setPosition.bind(null, index)}>
-                    <AtlasGames img="img_cannon_container_small_up.png" />
-                    <AtlasGames img="btn_join.png" x={32} y={addY}/>
-                </UIButton>
+
+                return !inSeatPlayerPosition[index]
+                    &&
+                    (
+                        <Container key={`BuyIn${index}`} x={x} y={y}>
+                            <AtlasGames img="img_cannon_container_small_up.png" />
+                            <UIButton x={32} y={addY} click={setPosition.bind(null, index)} hitArea={new Rectangle(0, 0, 55, 55)}>
+                                <AtlasGames img="btn_join.png" />
+                            </UIButton>
+                        </Container>
+                    )
             })
         }
     </Container>

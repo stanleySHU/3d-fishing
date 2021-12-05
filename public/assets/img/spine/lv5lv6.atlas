@@ -1,0 +1,552 @@
+
+lv5lv6.png
+size: 1950,269
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Cannon_Lvl5_BaseB
+  rotate: false
+  xy: 854, 6
+  size: 90, 116
+  orig: 90, 116
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_BaseG
+  rotate: false
+  xy: 946, 6
+  size: 90, 116
+  orig: 90, 116
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_BaseR
+  rotate: false
+  xy: 1038, 6
+  size: 90, 116
+  orig: 90, 116
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_BaseY
+  rotate: false
+  xy: 1130, 6
+  size: 90, 116
+  orig: 90, 116
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Blade_Glow_LfB
+  rotate: false
+  xy: 1178, 130
+  size: 56, 137
+  orig: 56, 138
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Blade_Glow_LfG
+  rotate: false
+  xy: 1236, 130
+  size: 56, 137
+  orig: 56, 138
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Blade_Glow_LfR
+  rotate: false
+  xy: 1294, 130
+  size: 56, 137
+  orig: 56, 138
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Blade_Glow_LfY
+  rotate: false
+  xy: 1352, 130
+  size: 56, 137
+  orig: 56, 138
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Blade_LfB
+  rotate: false
+  xy: 2, 107
+  size: 78, 160
+  orig: 78, 160
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Blade_LfG
+  rotate: false
+  xy: 82, 107
+  size: 78, 160
+  orig: 78, 160
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Blade_LfR
+  rotate: false
+  xy: 162, 107
+  size: 78, 160
+  orig: 78, 160
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Blade_LfY
+  rotate: false
+  xy: 242, 107
+  size: 78, 160
+  orig: 78, 160
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_BodyB
+  rotate: true
+  xy: 642, 124
+  size: 143, 132
+  orig: 143, 132
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_BodyG
+  rotate: true
+  xy: 776, 124
+  size: 143, 132
+  orig: 143, 132
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_BodyR
+  rotate: true
+  xy: 910, 124
+  size: 143, 132
+  orig: 143, 132
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_BodyY
+  rotate: true
+  xy: 1044, 124
+  size: 143, 132
+  orig: 143, 132
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Body_Glow_LfB
+  rotate: true
+  xy: 1222, 4
+  size: 22, 73
+  orig: 22, 74
+  offset: 0, 1
+  index: -1
+Cannon_Lvl5_Body_Glow_LfG
+  rotate: true
+  xy: 1297, 4
+  size: 22, 73
+  orig: 22, 74
+  offset: 0, 1
+  index: -1
+Cannon_Lvl5_Body_Glow_LfR
+  rotate: false
+  xy: 1729, 194
+  size: 22, 73
+  orig: 22, 74
+  offset: 0, 1
+  index: -1
+Cannon_Lvl5_Body_Glow_LfY
+  rotate: false
+  xy: 1753, 194
+  size: 22, 73
+  orig: 22, 74
+  offset: 0, 1
+  index: -1
+Cannon_Lvl5_CrestB
+  rotate: false
+  xy: 2, 2
+  size: 76, 103
+  orig: 76, 103
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_CrestG
+  rotate: false
+  xy: 80, 2
+  size: 76, 103
+  orig: 76, 103
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_CrestR
+  rotate: false
+  xy: 158, 2
+  size: 76, 103
+  orig: 76, 103
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_CrestY
+  rotate: false
+  xy: 236, 2
+  size: 76, 103
+  orig: 76, 103
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Joint_LfB
+  rotate: true
+  xy: 1372, 10
+  size: 31, 55
+  orig: 31, 55
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Joint_LfG
+  rotate: true
+  xy: 1429, 10
+  size: 31, 55
+  orig: 31, 55
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Joint_LfR
+  rotate: true
+  xy: 1486, 10
+  size: 31, 55
+  orig: 31, 55
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Joint_LfY
+  rotate: true
+  xy: 1543, 10
+  size: 31, 55
+  orig: 31, 55
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_LightB
+  rotate: false
+  xy: 1729, 132
+  size: 51, 60
+  orig: 51, 60
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_LightG
+  rotate: true
+  xy: 1883, 216
+  size: 51, 60
+  orig: 51, 60
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_LightR
+  rotate: true
+  xy: 1883, 163
+  size: 51, 60
+  orig: 51, 60
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_LightY
+  rotate: false
+  xy: 1802, 77
+  size: 51, 60
+  orig: 51, 60
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_PanelB
+  rotate: false
+  xy: 1777, 204
+  size: 51, 63
+  orig: 51, 63
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_PanelG
+  rotate: false
+  xy: 1749, 67
+  size: 51, 63
+  orig: 51, 63
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_PanelR
+  rotate: false
+  xy: 1782, 139
+  size: 51, 63
+  orig: 51, 63
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_PanelY
+  rotate: false
+  xy: 1830, 204
+  size: 51, 63
+  orig: 51, 63
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Trigger_LfB
+  rotate: true
+  xy: 1600, 13
+  size: 28, 52
+  orig: 28, 52
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Trigger_LfG
+  rotate: true
+  xy: 1654, 13
+  size: 28, 52
+  orig: 28, 52
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Trigger_LfR
+  rotate: true
+  xy: 1708, 13
+  size: 28, 52
+  orig: 28, 52
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Trigger_LfY
+  rotate: true
+  xy: 1762, 13
+  size: 28, 52
+  orig: 28, 52
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Wing_LfB
+  rotate: false
+  xy: 662, 2
+  size: 46, 120
+  orig: 46, 120
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Wing_LfG
+  rotate: false
+  xy: 710, 2
+  size: 46, 120
+  orig: 46, 120
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Wing_LfR
+  rotate: false
+  xy: 758, 2
+  size: 46, 120
+  orig: 46, 120
+  offset: 0, 0
+  index: -1
+Cannon_Lvl5_Wing_LfY
+  rotate: false
+  xy: 806, 2
+  size: 46, 120
+  orig: 46, 120
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_Blade_Glow_LfB
+  rotate: false
+  xy: 1410, 130
+  size: 56, 137
+  orig: 56, 138
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_Blade_Glow_LfG
+  rotate: false
+  xy: 1468, 130
+  size: 56, 137
+  orig: 56, 138
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_Blade_Glow_LfR
+  rotate: false
+  xy: 1526, 130
+  size: 56, 137
+  orig: 56, 138
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_Blade_Glow_LfY
+  rotate: false
+  xy: 1584, 130
+  size: 56, 137
+  orig: 56, 138
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_Blade_LfB
+  rotate: false
+  xy: 322, 107
+  size: 78, 160
+  orig: 78, 160
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_Blade_LfG
+  rotate: false
+  xy: 402, 107
+  size: 78, 160
+  orig: 78, 160
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_Blade_LfR
+  rotate: false
+  xy: 482, 107
+  size: 78, 160
+  orig: 78, 160
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_Blade_LfY
+  rotate: false
+  xy: 562, 107
+  size: 78, 160
+  orig: 78, 160
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_CrestB
+  rotate: true
+  xy: 1338, 43
+  size: 85, 135
+  orig: 85, 135
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_CrestG
+  rotate: true
+  xy: 1475, 43
+  size: 85, 135
+  orig: 85, 135
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_CrestR
+  rotate: true
+  xy: 1612, 43
+  size: 85, 135
+  orig: 85, 135
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_CrestY
+  rotate: false
+  xy: 1642, 132
+  size: 85, 135
+  orig: 85, 135
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_LightB
+  rotate: false
+  xy: 314, 5
+  size: 56, 100
+  orig: 56, 100
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_LightG
+  rotate: false
+  xy: 372, 5
+  size: 56, 100
+  orig: 56, 100
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_LightR
+  rotate: false
+  xy: 430, 5
+  size: 56, 100
+  orig: 56, 100
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_LightY
+  rotate: false
+  xy: 488, 5
+  size: 56, 100
+  orig: 56, 100
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_PanelB
+  rotate: false
+  xy: 546, 5
+  size: 56, 100
+  orig: 56, 100
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_PanelG
+  rotate: false
+  xy: 604, 5
+  size: 56, 100
+  orig: 56, 100
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_PanelR
+  rotate: false
+  xy: 1222, 28
+  size: 56, 100
+  orig: 56, 100
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_PanelY
+  rotate: false
+  xy: 1280, 28
+  size: 56, 100
+  orig: 56, 100
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_Trigger_LfB
+  rotate: true
+  xy: 1749, 43
+  size: 22, 54
+  orig: 22, 54
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_Trigger_LfG
+  rotate: false
+  xy: 1855, 77
+  size: 22, 54
+  orig: 22, 54
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_Trigger_LfR
+  rotate: false
+  xy: 1879, 77
+  size: 22, 54
+  orig: 22, 54
+  offset: 0, 0
+  index: -1
+Cannon_Lvl6_Trigger_LfY
+  rotate: false
+  xy: 1903, 77
+  size: 22, 54
+  orig: 22, 54
+  offset: 0, 0
+  index: -1
+cannon_lvl6_plasma_fx(screenBlend)_1
+  rotate: true
+  xy: 1835, 174
+  size: 28, 42
+  orig: 28, 43
+  offset: 0, 1
+  index: -1
+cannon_lvl6_plasma_fx(screenBlend)_10
+  rotate: false
+  xy: 1906, 3
+  size: 28, 42
+  orig: 28, 43
+  offset: 0, 1
+  index: -1
+cannon_lvl6_plasma_fx(screenBlend)_2
+  rotate: true
+  xy: 1835, 144
+  size: 28, 42
+  orig: 28, 43
+  offset: 0, 1
+  index: -1
+cannon_lvl6_plasma_fx(screenBlend)_3
+  rotate: true
+  xy: 1805, 47
+  size: 28, 42
+  orig: 28, 43
+  offset: 0, 1
+  index: -1
+cannon_lvl6_plasma_fx(screenBlend)_4
+  rotate: false
+  xy: 1816, 3
+  size: 28, 42
+  orig: 28, 43
+  offset: 0, 1
+  index: -1
+cannon_lvl6_plasma_fx(screenBlend)_5
+  rotate: false
+  xy: 1846, 3
+  size: 28, 42
+  orig: 28, 43
+  offset: 0, 1
+  index: -1
+cannon_lvl6_plasma_fx(screenBlend)_6
+  rotate: true
+  xy: 1849, 47
+  size: 28, 42
+  orig: 28, 43
+  offset: 0, 1
+  index: -1
+cannon_lvl6_plasma_fx(screenBlend)_7
+  rotate: false
+  xy: 1876, 3
+  size: 28, 42
+  orig: 28, 43
+  offset: 0, 1
+  index: -1
+cannon_lvl6_plasma_fx(screenBlend)_8
+  rotate: true
+  xy: 1906, 133
+  size: 28, 42
+  orig: 28, 43
+  offset: 0, 1
+  index: -1
+cannon_lvl6_plasma_fx(screenBlend)_9
+  rotate: true
+  xy: 1893, 47
+  size: 28, 42
+  orig: 28, 43
+  offset: 0, 1
+  index: -1

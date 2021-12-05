@@ -1,4 +1,4 @@
-import { Container, Sprite } from "@inlet/react-pixi";
+import { Container, Sprite, Text } from "@inlet/react-pixi";
 import { GameViewController } from "../../scenes/BaseScene";
 import { InSeatPlayerLayer } from './InSeatPlayerLayer';
 import { InSeatUserLayer } from './InSeatUserLayer';
@@ -13,7 +13,7 @@ import { Vector3 } from '@babylonjs/core';
 import { FishingPool } from "./FishPool";
 
 export const GameScene = (props) => {
-    const { actorId } = props;
+    const { actorId } = props.args;
     const tableUpdateMap = useContextSelector(AppContext, e => {
         return e.tableUpdateMap;
     });
@@ -28,7 +28,7 @@ const GameSceneContainer = (props) => {
         <GameScene2D />
         <GameScene3D />
         <Container>
-            <Sprite image="/assets/img/TableBg.jpg" />
+            <Sprite image="/assets/img/TableBg.png" />
         </Container>
     </GameViewController>
 }
@@ -38,13 +38,10 @@ const GameScene2D = (props) => {
         return [e.user, e.actorId, e.tableInfo, e.playerState];
     });
     return <Container>
-        {/* <Container>
-            <Sprite image="/assets/img/TableBg.jpg" />
-        </Container> */}
         <Container>
-            <BuyIn actorId={actorId} buyInCurrency={getBuyInCurrency(tableInfo.currency)} inSeatPlayerPosition={getSeatExistPlayerArrMap(playerState.playerInfoPositionMap)} userInSeat={!!playerState.playerInfoUserIdMap[user.id]} />
             <InSeatPlayerLayer />
             <InSeatUserLayer />
+            <BuyIn actorId={actorId} buyInCurrency={getBuyInCurrency(tableInfo.currency)} inSeatPlayerPosition={getSeatExistPlayerArrMap(playerState.playerInfoPositionMap)} userInSeat={!!playerState.playerInfoUserIdMap[user.id]} />
         </Container>
     </Container>;
 }

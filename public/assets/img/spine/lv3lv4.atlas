@@ -1,0 +1,174 @@
+
+lv3lv4.png
+size: 918,203
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Cannon_Lvl3_Arrow1B
+  rotate: true
+  xy: 202, 7
+  size: 19, 18
+  orig: 19, 18
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_Arrow1G
+  rotate: true
+  xy: 222, 7
+  size: 19, 18
+  orig: 19, 18
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_Arrow1R
+  rotate: true
+  xy: 242, 7
+  size: 19, 18
+  orig: 19, 18
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_Arrow1Y
+  rotate: true
+  xy: 262, 7
+  size: 19, 18
+  orig: 19, 18
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_BodyB
+  rotate: true
+  xy: 314, 49
+  size: 152, 149
+  orig: 152, 149
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_BodyG
+  rotate: true
+  xy: 465, 49
+  size: 152, 149
+  orig: 152, 149
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_BodyR
+  rotate: true
+  xy: 616, 49
+  size: 152, 149
+  orig: 152, 149
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_BodyY
+  rotate: true
+  xy: 767, 49
+  size: 152, 149
+  orig: 152, 149
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_PlaneB
+  rotate: true
+  xy: 314, 9
+  size: 38, 86
+  orig: 38, 86
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_PlaneG
+  rotate: true
+  xy: 402, 9
+  size: 38, 86
+  orig: 38, 86
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_PlaneR
+  rotate: true
+  xy: 490, 9
+  size: 38, 86
+  orig: 38, 86
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_PlaneY
+  rotate: true
+  xy: 578, 9
+  size: 38, 86
+  orig: 38, 86
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_ShooterB
+  rotate: false
+  xy: 2, 28
+  size: 76, 173
+  orig: 76, 173
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_ShooterG
+  rotate: false
+  xy: 80, 28
+  size: 76, 173
+  orig: 76, 173
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_ShooterR
+  rotate: false
+  xy: 158, 28
+  size: 76, 173
+  orig: 76, 173
+  offset: 0, 0
+  index: -1
+Cannon_Lvl3_ShooterY
+  rotate: false
+  xy: 236, 28
+  size: 76, 173
+  orig: 76, 173
+  offset: 0, 0
+  index: -1
+Cannon_Lvl4_Tube1_LfB
+  rotate: false
+  xy: 666, 9
+  size: 46, 38
+  orig: 46, 38
+  offset: 0, 0
+  index: -1
+Cannon_Lvl4_Tube1_LfG
+  rotate: false
+  xy: 714, 9
+  size: 46, 38
+  orig: 46, 38
+  offset: 0, 0
+  index: -1
+Cannon_Lvl4_Tube1_LfR
+  rotate: false
+  xy: 762, 9
+  size: 46, 38
+  orig: 46, 38
+  offset: 0, 0
+  index: -1
+Cannon_Lvl4_Tube1_LfY
+  rotate: false
+  xy: 810, 9
+  size: 46, 38
+  orig: 46, 38
+  offset: 0, 0
+  index: -1
+Cannon_Lvl4_Wing2_LfB
+  rotate: true
+  xy: 2, 2
+  size: 24, 48
+  orig: 24, 48
+  offset: 0, 0
+  index: -1
+Cannon_Lvl4_Wing2_LfG
+  rotate: true
+  xy: 52, 2
+  size: 24, 48
+  orig: 24, 48
+  offset: 0, 0
+  index: -1
+Cannon_Lvl4_Wing2_LfR
+  rotate: true
+  xy: 102, 2
+  size: 24, 48
+  orig: 24, 48
+  offset: 0, 0
+  index: -1
+Cannon_Lvl4_Wing2_LfY
+  rotate: true
+  xy: 152, 2
+  size: 24, 48
+  orig: 24, 48
+  offset: 0, 0
+  index: -1

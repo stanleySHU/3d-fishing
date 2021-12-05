@@ -36,15 +36,18 @@ export const PIXIApp = (props: PropsWithChildren<IPIXIProps>) => {
             pixiRenderer.resize(960, 540);
         });
 
-        const beforeRenderObservable = reactBablonjsEngine.onBeforeRenderLoopObservable.add((e) => {
+        //https://doc.babylonjs.com/extensions/Babylon.js+ExternalLibraries/BabylonJS_and_PixiJS
+        const beforeRenderObservable = reactBablonjsEngine.onBeforeRenderLoopObservable.add((e) => {    
             pixiRenderer.reset();
             pixiRenderer.render(stageBg);
+            pixiRenderer.reset(); //<-- i've added it 
         });
 
         const endRenderObservable = reactBablonjsEngine.onEndRenderLoopObservable.add((e) => {
             e.wipeCaches(true);
-            pixiRenderer.reset();
+            pixiRenderer.reset(); //<-- i've added it
             pixiRenderer.render(stage);
+            pixiRenderer.reset();
         });
         return () => {
             reactBablonjsEngine.onBeforeRenderLoopObservable.remove(beforeRenderObservable);

@@ -1,0 +1,314 @@
+
+lv1lv2.png
+size: 1741,466
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Cannon_Lvl1_Base_B
+  rotate: false
+  xy: 1282, 4
+  size: 129, 104
+  orig: 129, 104
+  offset: 0, 0
+  index: -1
+Cannon_Lvl1_Base_G
+  rotate: false
+  xy: 1477, 235
+  size: 129, 104
+  orig: 129, 104
+  offset: 0, 0
+  index: -1
+Cannon_Lvl1_Base_R
+  rotate: false
+  xy: 1413, 4
+  size: 129, 104
+  orig: 129, 104
+  offset: 0, 0
+  index: -1
+Cannon_Lvl1_Base_Y
+  rotate: false
+  xy: 1524, 129
+  size: 129, 104
+  orig: 129, 104
+  offset: 0, 0
+  index: -1
+Cannon_Lvl1_Shooter_B
+  rotate: true
+  xy: 1282, 110
+  size: 123, 119
+  orig: 123, 119
+  offset: 0, 0
+  index: -1
+Cannon_Lvl1_Shooter_G
+  rotate: true
+  xy: 1422, 341
+  size: 123, 119
+  orig: 123, 119
+  offset: 0, 0
+  index: -1
+Cannon_Lvl1_Shooter_R
+  rotate: true
+  xy: 1403, 110
+  size: 123, 119
+  orig: 123, 119
+  offset: 0, 0
+  index: -1
+Cannon_Lvl1_Shooter_Y
+  rotate: true
+  xy: 1543, 341
+  size: 123, 119
+  orig: 123, 119
+  offset: 0, 0
+  index: -1
+Cannon_Lvl1_barrel_B
+  rotate: true
+  xy: 1010, 2
+  size: 89, 134
+  orig: 89, 136
+  offset: 0, 2
+  index: -1
+Cannon_Lvl1_barrel_G
+  rotate: true
+  xy: 1146, 2
+  size: 89, 134
+  orig: 89, 136
+  offset: 0, 2
+  index: -1
+Cannon_Lvl1_barrel_R
+  rotate: true
+  xy: 1089, 235
+  size: 89, 134
+  orig: 89, 136
+  offset: 0, 2
+  index: -1
+Cannon_Lvl1_barrel_Y
+  rotate: true
+  xy: 1225, 235
+  size: 89, 134
+  orig: 89, 136
+  offset: 0, 2
+  index: -1
+Impact_StyleA_B
+  rotate: false
+  xy: 386, 229
+  size: 141, 235
+  orig: 141, 236
+  offset: 0, 0
+  index: -1
+Impact_StyleA_G
+  rotate: false
+  xy: 529, 229
+  size: 141, 235
+  orig: 141, 236
+  offset: 0, 0
+  index: -1
+Impact_StyleA_R
+  rotate: true
+  xy: 542, 86
+  size: 141, 235
+  orig: 141, 236
+  offset: 0, 0
+  index: -1
+Impact_StyleA_Y
+  rotate: false
+  xy: 672, 229
+  size: 141, 235
+  orig: 141, 236
+  offset: 0, 0
+  index: -1
+LV2_btm_Cover_B
+  rotate: true
+  xy: 962, 15
+  size: 75, 46
+  orig: 75, 46
+  offset: 0, 0
+  index: -1
+LV2_btm_Cover_G
+  rotate: false
+  xy: 1664, 418
+  size: 75, 46
+  orig: 75, 46
+  offset: 0, 0
+  index: -1
+LV2_btm_Cover_R
+  rotate: false
+  xy: 1664, 370
+  size: 75, 46
+  orig: 75, 46
+  offset: 0, 0
+  index: -1
+LV2_btm_Cover_Y
+  rotate: false
+  xy: 1655, 201
+  size: 75, 46
+  orig: 75, 46
+  offset: 0, 0
+  index: -1
+LV2_btm_button_B
+  rotate: false
+  xy: 815, 230
+  size: 50, 38
+  orig: 50, 38
+  offset: 0, 0
+  index: -1
+LV2_btm_button_G
+  rotate: false
+  xy: 867, 230
+  size: 50, 38
+  orig: 50, 38
+  offset: 0, 0
+  index: -1
+LV2_btm_button_R
+  rotate: false
+  xy: 919, 230
+  size: 50, 38
+  orig: 50, 38
+  offset: 0, 0
+  index: -1
+LV2_btm_button_Y
+  rotate: false
+  xy: 971, 230
+  size: 50, 38
+  orig: 50, 38
+  offset: 0, 0
+  index: -1
+LV2_btm_main_B
+  rotate: true
+  xy: 1089, 326
+  size: 138, 109
+  orig: 138, 109
+  offset: 0, 0
+  index: -1
+LV2_btm_main_G
+  rotate: true
+  xy: 1200, 326
+  size: 138, 109
+  orig: 138, 109
+  offset: 0, 0
+  index: -1
+LV2_btm_main_R
+  rotate: true
+  xy: 1171, 95
+  size: 138, 109
+  orig: 138, 109
+  offset: 0, 0
+  index: -1
+LV2_btm_main_Y
+  rotate: true
+  xy: 1311, 326
+  size: 138, 109
+  orig: 138, 109
+  offset: 0, 0
+  index: -1
+LV2_mid_cover2_B
+  rotate: true
+  xy: 752, 4
+  size: 80, 103
+  orig: 80, 103
+  offset: 0, 0
+  index: -1
+LV2_mid_cover2_G
+  rotate: true
+  xy: 542, 3
+  size: 81, 103
+  orig: 81, 103
+  offset: 0, 0
+  index: -1
+LV2_mid_cover2_R
+  rotate: true
+  xy: 647, 3
+  size: 81, 103
+  orig: 81, 103
+  offset: 0, 0
+  index: -1
+LV2_mid_cover2_Y
+  rotate: true
+  xy: 857, 10
+  size: 80, 103
+  orig: 80, 103
+  offset: 0, 0
+  index: -1
+LV2_top_barrel_B
+  rotate: false
+  xy: 1361, 235
+  size: 114, 89
+  orig: 115, 90
+  offset: 0, 1
+  index: -1
+LV2_top_barrel_G
+  rotate: false
+  xy: 1608, 249
+  size: 114, 90
+  orig: 115, 90
+  offset: 0, 0
+  index: -1
+LV2_top_barrel_R
+  rotate: true
+  xy: 1544, 13
+  size: 114, 90
+  orig: 115, 90
+  offset: 0, 0
+  index: -1
+LV2_top_barrel_Y
+  rotate: true
+  xy: 1636, 13
+  size: 114, 89
+  orig: 115, 90
+  offset: 0, 1
+  index: -1
+Lvl2_Base_B
+  rotate: false
+  xy: 779, 92
+  size: 194, 135
+  orig: 194, 135
+  offset: 0, 0
+  index: -1
+Lvl2_Base_G
+  rotate: true
+  xy: 815, 270
+  size: 194, 135
+  orig: 194, 135
+  offset: 0, 0
+  index: -1
+Lvl2_Base_R
+  rotate: true
+  xy: 952, 270
+  size: 194, 135
+  orig: 194, 135
+  offset: 0, 0
+  index: -1
+Lvl2_Base_Y
+  rotate: false
+  xy: 975, 93
+  size: 194, 135
+  orig: 194, 135
+  offset: 0, 0
+  index: -1
+Tankeffect_B
+  rotate: true
+  xy: 2, 196
+  size: 268, 190
+  orig: 269, 190
+  offset: 0, 0
+  index: -1
+Tankeffect_G
+  rotate: false
+  xy: 2, 4
+  size: 268, 190
+  orig: 269, 190
+  offset: 0, 0
+  index: -1
+Tankeffect_R
+  rotate: true
+  xy: 194, 196
+  size: 268, 190
+  orig: 269, 190
+  offset: 0, 0
+  index: -1
+Tankeffect_Y
+  rotate: false
+  xy: 272, 4
+  size: 268, 190
+  orig: 269, 190
+  offset: 0, 0
+  index: -1

@@ -1,80 +1,96 @@
 import { Container, Graphics, _ReactPixi, Text } from "@inlet/react-pixi"
-import { Graphics as pixiGraphics } from 'pixi.js';
+import { Graphics as pixiGraphics, Rectangle } from 'pixi.js';
 import { AtlasGames } from "../assets"
 import { Avatar } from '../../components/pixi/Avatar';
-import { PropsWithChildren, useCallback, useRef } from "react";
+import React, { PropsWithChildren, useCallback } from "react";
 import { Chip } from '../../components/pixi/Chip';
 import { useContextSelector } from "use-context-selector";
 import { GameDataSourceContext } from "../../model/context/GameDataProvider";
+import { UICannonFresher, UICannonAdvanted, UICannonMaster } from '../assets';
+import { isRoomAdvanted, isRoomFree, isRoomFresher, isRoomMaster } from '../../units/GameLib';
+import { UIButton } from "../../components/pixi/Button";
 
-export const InSeatUserLayer = (props) => {
+export const InSeatUserLayer = React.memo((props) => {
     const [user, playerState] = useContextSelector(GameDataSourceContext, (e) => {
         return [e.user, e.playerState];
     });
     const userInfo = playerState.playerInfoUserIdMap[user.id];
-    return !!userInfo && <Container>
+
+    function onShoot(e) {
+        
+    }
+
+    return !!userInfo && <UIButton hitArea={new Rectangle(0, 0, 960, 540)} click={onShoot}>
         {
-            userInfo.position == 0 && <Container>
-                <Container x={122} y={47} >
-                    <AtlasGames img="img_avatar_container.png" scale={[1, -1]} anchor={[0, 1]} />
-                    <GameAvatar avatarId={0} x={7} y={6} />
+            userInfo.position == 0
+            &&
+            (
+                <Container>
+                    <Container x={122} y={47} >
+                        <AtlasGames img="img_avatar_container.png" scale={[1, -1]} anchor={[0, 1]} />
+                        <GameAvatar avatarId={0} x={7} y={6} />
+                    </Container>
+                    <PlayerInfoContainer x={74} y={5}>
+                        <PlayerNameText x={86} y={34} text='stanley001' />
+                        <PlayerBalanceContainer x={41} y={4} amount={0} />
+                    </PlayerInfoContainer>
+                    <FortContainer x={250} y={-16} position={0}></FortContainer>
                 </Container>
-                <PlayerInfoContainer x={74} y={5}>
-                    <PlayerNameText x={86} y={34} text='stanley001' />
-                    <PlayerBalanceContainer x={41} y={4} amount={0} />
-                </PlayerInfoContainer>
-                <FortContainer x={250} y={-16}>
-                    <CannonAmount x={58} y={26} amount={1000} />
-                </FortContainer>
-            </Container>
+            )
         }
         {
-            userInfo.position == 1 && <Container>
-                <Container x={816} y={47} >
-                    <AtlasGames img="img_avatar_container.png" scale={[1, -1]} anchor={[0, 1]} />
-                    <GameAvatar avatarId={0} x={7} y={6} />
+            userInfo.position == 1
+            &&
+            (
+                <Container>
+                    <Container x={816} y={47} >
+                        <AtlasGames img="img_avatar_container.png" scale={[1, -1]} anchor={[0, 1]} />
+                        <GameAvatar avatarId={0} x={7} y={6} />
+                    </Container>
+                    <PlayerInfoContainer x={767} y={5}>
+                        <PlayerNameText x={86} y={34} text='stanley002' />
+                        <PlayerBalanceContainer x={41} y={4} amount={0} />
+                    </PlayerInfoContainer>
+                    <FortContainer x={576} y={-16} position={1}/>
                 </Container>
-                <PlayerInfoContainer x={767} y={5}>
-                    <PlayerNameText x={86} y={34} text='stanley002' />
-                    <PlayerBalanceContainer x={41} y={4} amount={0} />
-                </PlayerInfoContainer>
-                <FortContainer x={576} y={-16}>
-                    <CannonAmount x={58} y={26} amount={1000} />
-                </FortContainer>
-            </Container>
+            )
         }
         {
-            userInfo.position == 2 && <Container>
-                <Container x={122} y={422} >
-                    <AtlasGames img="img_avatar_container.png" />
-                    <GameAvatar avatarId={0} x={7} y={4} />
+            userInfo.position == 2
+            &&
+            (
+                <Container>
+                    <Container x={122} y={422} >
+                        <AtlasGames img="img_avatar_container.png" />
+                        <GameAvatar avatarId={0} x={7} y={4} />
+                    </Container>
+                    <PlayerInfoContainer x={74} y={492}>
+                        <PlayerNameText x={86} y={10} text='stanley003' />
+                        <PlayerBalanceContainer x={41} y={17} amount={0} />
+                    </PlayerInfoContainer>
+                    <FortContainer x={250} y={484} position={2}/>
                 </Container>
-                <PlayerInfoContainer x={74} y={492}>
-                    <PlayerNameText x={86} y={10} text='stanley003' />
-                    <PlayerBalanceContainer x={41} y={17} amount={0} />
-                </PlayerInfoContainer>
-                <FortContainer x={250} y={484}>
-                    <CannonAmount x={58} y={15} amount={1000} />
-                </FortContainer>
-            </Container>
+            )
         }
         {
-            userInfo.position == 3 && <Container>
-                <Container x={816} y={422} >
-                    <AtlasGames img="img_avatar_container.png" />
-                    <GameAvatar avatarId={0} x={7} y={4} />
+            userInfo.position == 3
+            &&
+            (
+                <Container>
+                    <Container x={816} y={422} >
+                        <AtlasGames img="img_avatar_container.png" />
+                        <GameAvatar avatarId={0} x={7} y={4} />
+                    </Container>
+                    <PlayerInfoContainer x={767} y={492}>
+                        <PlayerNameText x={86} y={10} text='stanley004' />
+                        <PlayerBalanceContainer x={41} y={17} amount={0} />
+                    </PlayerInfoContainer>
+                    <FortContainer x={576} y={484} position={3}/>
                 </Container>
-                <PlayerInfoContainer x={767} y={492}>
-                    <PlayerNameText x={86} y={10} text='stanley004' />
-                    <PlayerBalanceContainer x={41} y={17} amount={0} />
-                </PlayerInfoContainer>
-                <FortContainer x={576} y={484}>
-                    <CannonAmount x={58} y={15} amount={1000} />
-                </FortContainer>
-            </Container>
+            )
         }
-    </Container >
-}
+    </UIButton >
+}, () => true);
 
 export const PlayerInfoContainer = (props: PropsWithChildren<_ReactPixi.IContainer>) => {
     const { children } = props;
@@ -120,12 +136,32 @@ export const GameAvatar = (props: _ReactPixi.IContainer & { avatarId: number }) 
     </Container>
 }
 
-export const FortContainer = (props: PropsWithChildren<_ReactPixi.IContainer>) => {
-    const { children } = props;
+type IFortContainerProps = _ReactPixi.IContainer & {
+    position: 0 | 1 | 2 | 3
+}
+const SKIN_OF_POSITION = ['red', 'green', 'blue', 'yellow'];
+export const FortContainer = (props: IFortContainerProps) => {
+    const { position } = props;
+    const tableInfo = useContextSelector(GameDataSourceContext, (e) => {
+        return e.tableInfo;
+    });
+
     return <Container {...props} >
         <AtlasGames img="img_cannon_container_large.png" />
         <Container>
-            {children}
+            {
+                (isRoomFree(tableInfo) || isRoomFresher(tableInfo)) &&
+                <UICannonFresher x={91.5} y={65} skin={SKIN_OF_POSITION[position]} loop={true} action={'lv1cannon'} scale={0.25} rotation={3.14}/>
+            }
+            {
+                isRoomAdvanted(tableInfo) &&
+                <UICannonAdvanted x={91.5} y={65} skin={SKIN_OF_POSITION[position]} loop={true} action={'lv3cannon'} scale={0.25} rotation={3.14} />
+            }
+            {
+                isRoomMaster(tableInfo) &&
+                <UICannonMaster x={91.5} y={65} skin={SKIN_OF_POSITION[position]} loop={true} action={'lv5cannon'} scale={0.25} rotation={3.14} />
+            }
+            <CannonAmount x={58} y={16} amount={1000} />
         </Container>
     </Container>
 }

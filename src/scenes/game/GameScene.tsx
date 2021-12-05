@@ -40,12 +40,9 @@ const MyScene = React.memo((props) => {
     </>
 }, () => true);
 
-type IGameSceneProps = ISceneProps & {
-    actorId?: string
-}
 
-export const GameScene = (props: IGameSceneProps) => {
-    const { actorId } = props;
+export const GameScene = (props: ISceneProps) => {
+    const { actorId } = props.args;
     const [user, tableUpdateMap] = useContextSelector(AppContext, e => {
         return [e.user, e.tableUpdateMap];
     });
