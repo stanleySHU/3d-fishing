@@ -11,6 +11,8 @@ import { GameDataSourceProvider, GameDataSourceContext, IGameDataContext } from 
 import { Scene } from 'react-babylonjs';
 import { Vector3 } from '@babylonjs/core';
 import { FishingPool } from "./FishPool";
+import { BulletPool } from "./BulletPool";
+import { AtlasBullets } from "../assets";
 
 export const GameScene = (props) => {
     const { actorId } = props.args;
@@ -38,6 +40,7 @@ const GameScene2D = (props) => {
         return [e.user, e.actorId, e.tableInfo, e.playerState];
     });
     return <Container>
+        <BulletPool/>
         <Container>
             <InSeatPlayerLayer />
             <InSeatUserLayer />

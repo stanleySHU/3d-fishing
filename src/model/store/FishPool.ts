@@ -1,9 +1,13 @@
 import { FishModel } from "../core/FishModel";
+import { BulletModel } from "../core/BulletModel";
 import { NewFishNoticeModel } from "../socket/NewFishNoticeModel";
 import * as DateUtil from '../../units/date';
+import { FireBulletBroadCastModel } from "../socket/FireBulletBroadCastModel";
+import { Vector2 } from "@babylonjs/core";
 
 export type InitialState = {
-    fishs: FishModel[]
+    fishs: FishModel[],
+    bullets: BulletModel[]
 }
 
 export const initialState: InitialState = {
@@ -13,10 +17,11 @@ export const initialState: InitialState = {
             new FishModel({fishGenId: 20001, fishNumber: 2000, pathNumber: 1000, pathType: 0, startTime: 0, currentTime: 0, totalTime: 10000, newStage: 0}),
             new FishModel({fishGenId: 20002, fishNumber: 2000, pathNumber: 1000, pathType: 0, startTime: 0, currentTime: 0, totalTime: 10000, newStage: 0})
         ]
-    })())*/
+    })())*/,
+    bullets: []
 }
 
-type IActionType = 'newFrames' | 'newFish' | 'newStage';
+type IActionType = 'newFrames' | 'newFish' | 'newStage' | 'fireBulletBroadCast';
 
 export type Action = {
     type: IActionType,
@@ -35,6 +40,9 @@ export const reducer = (state: InitialState, action: Action): InitialState => {
         }
         case 'newFish': {   
             return handleNewFish(state, action);
+        }
+        case 'fireBulletBroadCast': {
+            return handleFireBulletBroadCast(state, action);
         }
         default: {
 
@@ -64,17 +72,30 @@ export const NewFishNoticeAction = (model: NewFishNoticeModel): Action => {
     }
 }
 
+export const FireBulletBroadCastAction = (model: FireBulletBroadCastModel): Action => {
+    return {
+        type: 'fireBulletBroadCast',
+        payload: {
+            model: model
+        }
+    }
+}
+
 function handleNewFrames(state: InitialState, action: Action): InitialState {
     const dateTime = DateUtil.nowMillis();
 
     const newFishs = [];
     state.fishs.forEach(fish => {
-        const isLiveing = fish.swiming(dateTime);
+        const isLiveing = fish.nextFrame(dateTime);
         if (isLiveing) {
             newFishs.push(fish);
         }
     });
     state.fishs = newFishs;
+    
+    state.bullets.forEach(bullet => {
+        bullet.nextFrame(dateTime);
+    });
 
     return state;
 }
@@ -85,5 +106,12 @@ function handleNewFish(state: InitialState, action: Action): InitialState {
         fishs.push(new FishModel(item));
     }
     state.fishs = fishs;
+    return state;
+}
+
+function handleFireBulletBroadCast(state: InitialState, action: Action): InitialState {
+    const model: FireBulletBroadCastModel = action.payload.model, bullets = state.bullets;
+    bullets.push(new BulletModel(model, new Vector2(0, 0)));
+    state.bullets = bullets;
     return state;
 }

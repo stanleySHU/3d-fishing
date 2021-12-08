@@ -179,8 +179,8 @@ const createWebsocket = () => {
             dropIn(actorId: string, second: number = 0): boolean {
                 return send(['dropIn', actorId], second);
             },
-            fireBulletIn(actorId: string, angle: number, amount: number, bulletId: number, second: number = 0): boolean {
-                return send(['fireBulletIn', actorId, String(angle), String(amount), String(bulletId)], second);
+            fireBulletIn(actorId: string, degrees: number, amount: number, bulletId: number, fishId: number | string = "", second: number = 0): boolean {
+                return send(['fireBulletIn', actorId, String(degrees), String(amount), String(bulletId), String(fishId)], second);
             },
             bulletHitFishIn(actorId: string, amount: number, fishs: string, second: number = 0): boolean {
                 return send(['bulletHitFishIn', actorId, String(amount), fishs], second);

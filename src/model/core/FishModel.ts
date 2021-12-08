@@ -41,7 +41,7 @@ export class FishModel {
         this._direction = t.direction;
     }
 
-    swiming(currentTime: number): boolean {
+    nextFrame(currentTime: number): boolean {
         let per = (currentTime - this.startTime) / this.totalTime;
         this.setNextSwimStatus(per);
         return per < 1;

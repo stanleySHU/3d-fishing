@@ -2,7 +2,7 @@
 
 "avatar_frame.png":
 {
-	"frame": {"x":862,"y":371,"w":56,"h":56},
+	"frame": {"x":711,"y":323,"w":56,"h":56},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":56},
@@ -10,7 +10,7 @@
 },
 "daily_login.png":
 {
-	"frame": {"x":862,"y":429,"w":44,"h":44},
+	"frame": {"x":769,"y":323,"w":44,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":44},
@@ -24,17 +24,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":326,"h":402},
 	"sourceSize": {"w":326,"h":402}
 },
+"img_fish_type_bg.png":
+{
+	"frame": {"x":711,"y":189,"w":132,"h":80},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":132,"h":80},
+	"sourceSize": {"w":132,"h":80}
+},
 "logo.png":
 {
 	"frame": {"x":796,"y":189,"w":144,"h":56},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":56},
-	"sourceSize": {"w":144,"h":56}
-},
-"logo_temp.png":
-{
-	"frame": {"x":801,"y":247,"w":144,"h":56},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":56},
@@ -50,7 +50,7 @@
 },
 "refresh.png":
 {
-	"frame": {"x":908,"y":429,"w":44,"h":44},
+	"frame": {"x":796,"y":491,"w":44,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":44},
@@ -58,7 +58,7 @@
 },
 "rewards.png":
 {
-	"frame": {"x":862,"y":475,"w":42,"h":44},
+	"frame": {"x":815,"y":313,"w":42,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":42,"h":44},
@@ -66,7 +66,7 @@
 },
 "rewards_bg.png":
 {
-	"frame": {"x":711,"y":255,"w":88,"h":110},
+	"frame": {"x":859,"y":247,"w":88,"h":110},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":110},
@@ -114,7 +114,7 @@
 },
 "tab_gpi_lobby.png":
 {
-	"frame": {"x":711,"y":189,"w":64,"h":64},
+	"frame": {"x":793,"y":247,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -122,7 +122,7 @@
 },
 "tab_help.png":
 {
-	"frame": {"x":801,"y":305,"w":64,"h":64},
+	"frame": {"x":815,"y":359,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -130,7 +130,7 @@
 },
 "tab_news.png":
 {
-	"frame": {"x":867,"y":305,"w":64,"h":64},
+	"frame": {"x":881,"y":359,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -138,7 +138,7 @@
 },
 "tab_ranking.png":
 {
-	"frame": {"x":796,"y":371,"w":64,"h":64},
+	"frame": {"x":796,"y":425,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -146,7 +146,7 @@
 },
 "tab_settings.png":
 {
-	"frame": {"x":796,"y":437,"w":64,"h":64},
+	"frame": {"x":862,"y":425,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -159,6 +159,6 @@
 	"format": "BGRA8888",
 	"size": {"w":962,"h":536},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:74e25fdc7c1da0767128afdb4d431699:168ef2fe5a461f0dd969924f06398e85:75c4161980fdd548418175a5dbe90f28$"
+	"smartupdate": "$TexturePacker:SmartUpdate:02735e37426e0fda5e5adc3e1321f1f1:22af047c856c82754c73440b509945c6:75c4161980fdd548418175a5dbe90f28$"
 }
 }

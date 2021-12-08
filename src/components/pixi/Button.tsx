@@ -5,11 +5,18 @@ import { throttle } from "../../units/function";
 
 
 type IButtonProps = PropsWithChildren<any> & {
-    enable?: boolean
+    enable?: boolean,
+    throttleTime?: number
 };
 
 export const UIButton = (props: IButtonProps) => {
-    return <Container interactive={props.enable !== false} cursor="pointer" {...props}>
+    const { click, throttleTime } = props;
+
+    const onClick = throttle(args => {
+        click && click(args);
+    }, throttleTime || 300)
+
+    return <Container interactive={props.enable !== false} cursor="pointer" {...props} click={onClick}>
         {props.children}
     </Container>
 }
@@ -28,10 +35,10 @@ export const UIButtonWithAnimation = (props: IButtonProps) => {
         immediate: true
     });
 
-    const onClick = throttle(args => {
+    const onClick = (args) => {
         click && click(args);
         styles.alpha.reset();
-    }, 500)
+    }
 
     return <UIButton {...props} click={onClick} {...styles}/>
 }

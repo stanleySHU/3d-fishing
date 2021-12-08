@@ -199,21 +199,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">avatar_frame.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>32,32,63,64</rect>
-                <key>scale9Paddings</key>
-                <rect>32,32,63,64</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">btn_join.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -256,6 +241,22 @@
                 <rect>27,27,53,53</rect>
                 <key>scale9Paddings</key>
                 <rect>27,27,53,53</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">cannon_+.png</key>
+            <key type="filename">cannon_-.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,23,46,46</rect>
+                <key>scale9Paddings</key>
+                <rect>23,23,46,46</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -331,6 +332,24 @@
                 <rect>84,22,168,43</rect>
                 <key>scale9Paddings</key>
                 <rect>84,22,168,43</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">lock_icon_0.png</key>
+            <key type="filename">lock_icon_1.png</key>
+            <key type="filename">lock_icon_2.png</key>
+            <key type="filename">lock_icon_3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>56,56,111,111</rect>
+                <key>scale9Paddings</key>
+                <rect>56,56,111,111</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

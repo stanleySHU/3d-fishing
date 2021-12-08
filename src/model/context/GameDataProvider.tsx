@@ -6,7 +6,7 @@ import { ChangeSeatBroadCastModel } from "../socket/ChangeSeatBroadCastModel";
 import { FireBulletBroadCastModel } from "../socket/FireBulletBroadCastModel";
 import { NewFishNoticeModel } from "../socket/NewFishNoticeModel";
 import { createContext, useContextSelector } from 'use-context-selector';
-import { initialState as initialState_fishPool, reducer as reducer_fishPool, InitialState as FishPoolInitialState, NewFishNoticeAction, NewFramesAction, NewStageAction,  } from "../store/FishPool";
+import { initialState as initialState_fishPool, reducer as reducer_fishPool, InitialState as FishPoolInitialState, NewFishNoticeAction, NewFramesAction, NewStageAction, FireBulletBroadCastAction,  } from "../store/FishPool";
 import { initialState as initialState_playerInfos, reducer as reducer_playerInfos, InitialState as PlayerInfosInitialState, PlayerJoinTableAction, ChangeSeatBroadCastAction } from '../store/PlayerInfos';
 import { InSeatPlayerInfoWithPositionModel, TableInfoModel, TableUpdateModel } from "../socket/TableUpdateModel";
 import { PlayerJoinTableModel } from "../socket/PlayerJoinTableModel";
@@ -64,7 +64,8 @@ export const GameDataSourceProvider = (props: IGameDataSourceProps) => {
             }
         },
         handleFireBulletBroadCast: (model: MessageModel<FireBulletBroadCastModel>) => {
-
+            const content = model.messageContent;
+            poolDispath(FireBulletBroadCastAction(content))
         },
         handleBulletHitFishBroadCast: (model: MessageModel<BulletHitFishBroadCastModel>) => {
 

@@ -9,21 +9,25 @@ export type ISpineProps = {
     skin: string,
     animation?: string,
     loop: boolean,
-    speed?: number
+    speed?: number,
+    onComplete?: () => void
 } & _ReactPixi.IContainer;
 
 export const UISpine = (props: ISpineProps) => {
-    const { atlas, skin, animation, loop, speed } = props;
+    const { atlas, skin, animation, loop, speed, onComplete } = props;
     const containerRef = useRef<pixiContainer   >();
     const [spine, setSpine] = useState<Spine>(null);
     const resourceMap = useAssetsManager();
     const resource = resourceMap[atlas];
 
     useEffect(() => {
-        if (containerRef) {
+        if (containerRef.current) {
             const obj = new Spine(resource.spineData);
             containerRef.current.addChild(obj);
             setSpine(obj);
+            return () => {
+
+            }
         }
     }, []);
 
@@ -36,6 +40,14 @@ export const UISpine = (props: ISpineProps) => {
     useEffect(() => {
         if (spine) {
             spine.state.setAnimation(0, animation, loop);
+
+            const listener = {
+                complete: onComplete
+            };
+            spine.state.addListener(listener);
+            return () => {
+                spine.state.removeListener(listener);
+            }
         }
     }, [animation, loop, spine]);
 

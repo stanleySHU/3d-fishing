@@ -1,26 +1,53 @@
 import { Container, Graphics, _ReactPixi, Text } from "@inlet/react-pixi"
 import { Graphics as pixiGraphics, Rectangle } from 'pixi.js';
+import { Angle, Vector2 } from '@babylonjs/core';
 import { AtlasGames } from "../assets"
 import { Avatar } from '../../components/pixi/Avatar';
-import React, { PropsWithChildren, useCallback } from "react";
+import React, { PropsWithChildren, useCallback, useState } from "react";
 import { Chip } from '../../components/pixi/Chip';
 import { useContextSelector } from "use-context-selector";
 import { GameDataSourceContext } from "../../model/context/GameDataProvider";
-import { UICannonFresher, UICannonAdvanted, UICannonMaster } from '../assets';
-import { isRoomAdvanted, isRoomFree, isRoomFresher, isRoomMaster } from '../../units/GameLib';
 import { UIButton } from "../../components/pixi/Button";
+import { WebsocketService } from "../../services/websocket";
+import { Fort } from "./Fort";
 
-export const InSeatUserLayer = React.memo((props) => {
-    const [user, playerState] = useContextSelector(GameDataSourceContext, (e) => {
-        return [e.user, e.playerState];
+const CANNON_POINT_POSITION_MAP: { [key: string | number]: Vector2  } = {
+    0: new Vector2(250 + 91.5, -16 + 65),
+    1: new Vector2(576 + 91.5, -16 + 65),
+    2: new Vector2(250 + 91.5, 480 + 65),
+    3: new Vector2(576 + 91.5, 484 + 65)
+}
+
+type IInSeatUserLayerProps = {
+
+}
+
+export const InSeatUserLayer = React.memo((props: IInSeatUserLayerProps) => {
+    const websocket = WebsocketService();
+    const [actorId, user, playerState] = useContextSelector(GameDataSourceContext, (e) => {
+        return [e.actorId, e.user, e.playerState];
     });
+    const [bulletId, setBulletId] = useState(1);
+    const [shootAmount, setShootAmount] = useState(0);
+    const [cannonRadians, setCannonRadians] = useState(0);
     const userInfo = playerState.playerInfoUserIdMap[user.id];
 
     function onShoot(e) {
-        
+        const { position } = userInfo;
+        const cannonPoint = CANNON_POINT_POSITION_MAP[position];
+        const {x, y} = e.data.global, tapPoint = new Vector2(x, y);
+        const angle = Angle.BetweenTwoPoints(cannonPoint, tapPoint),
+            degrees = Math.round(angle.degrees()),
+            _radians = angle.radians();
+        websocket.sender.fireBulletIn(actorId, degrees, shootAmount, bulletId);
+        setBulletId(() => {
+            return bulletId + 1;
+        });
+        setCannonRadians(_radians);
     }
 
-    return !!userInfo && <UIButton hitArea={new Rectangle(0, 0, 960, 540)} click={onShoot}>
+    return !!userInfo && <Container>
+        <UIButton hitArea={new Rectangle(0, 0, 960, 540)} click={onShoot}/>
         {
             userInfo.position == 0
             &&
@@ -34,7 +61,7 @@ export const InSeatUserLayer = React.memo((props) => {
                         <PlayerNameText x={86} y={34} text='stanley001' />
                         <PlayerBalanceContainer x={41} y={4} amount={0} />
                     </PlayerInfoContainer>
-                    <FortContainer x={250} y={-16} position={0}></FortContainer>
+                    <Fort x={250} y={-16} playerPosition={0} shootAmount={shootAmount} setShootAmount={setShootAmount} radians={cannonRadians + 3.14}/>
                 </Container>
             )
         }
@@ -51,7 +78,7 @@ export const InSeatUserLayer = React.memo((props) => {
                         <PlayerNameText x={86} y={34} text='stanley002' />
                         <PlayerBalanceContainer x={41} y={4} amount={0} />
                     </PlayerInfoContainer>
-                    <FortContainer x={576} y={-16} position={1}/>
+                    <Fort x={576} y={-16} playerPosition={1} shootAmount={shootAmount} setShootAmount={setShootAmount} radians={cannonRadians + 3.14}/>
                 </Container>
             )
         }
@@ -68,7 +95,7 @@ export const InSeatUserLayer = React.memo((props) => {
                         <PlayerNameText x={86} y={10} text='stanley003' />
                         <PlayerBalanceContainer x={41} y={17} amount={0} />
                     </PlayerInfoContainer>
-                    <FortContainer x={250} y={484} position={2}/>
+                    <Fort x={250} y={484} playerPosition={2} shootAmount={shootAmount} setShootAmount={setShootAmount} radians={cannonRadians}/>
                 </Container>
             )
         }
@@ -85,11 +112,11 @@ export const InSeatUserLayer = React.memo((props) => {
                         <PlayerNameText x={86} y={10} text='stanley004' />
                         <PlayerBalanceContainer x={41} y={17} amount={0} />
                     </PlayerInfoContainer>
-                    <FortContainer x={576} y={484} position={3}/>
+                    <Fort x={576} y={484} playerPosition={3} shootAmount={shootAmount} setShootAmount={setShootAmount} radians={cannonRadians}/>
                 </Container>
             )
         }
-    </UIButton >
+    </Container>
 }, () => true);
 
 export const PlayerInfoContainer = (props: PropsWithChildren<_ReactPixi.IContainer>) => {
@@ -133,45 +160,6 @@ export const GameAvatar = (props: _ReactPixi.IContainer & { avatarId: number }) 
     return <Container {...props}>
         <Avatar avatarId={props.avatarId} width={60} height={60} radius={24} />
         <Graphics draw={drawFrame} />
-    </Container>
-}
-
-type IFortContainerProps = _ReactPixi.IContainer & {
-    position: 0 | 1 | 2 | 3
-}
-const SKIN_OF_POSITION = ['red', 'green', 'blue', 'yellow'];
-export const FortContainer = (props: IFortContainerProps) => {
-    const { position } = props;
-    const tableInfo = useContextSelector(GameDataSourceContext, (e) => {
-        return e.tableInfo;
-    });
-
-    return <Container {...props} >
-        <AtlasGames img="img_cannon_container_large.png" />
-        <Container>
-            {
-                (isRoomFree(tableInfo) || isRoomFresher(tableInfo)) &&
-                <UICannonFresher x={91.5} y={65} skin={SKIN_OF_POSITION[position]} loop={true} action={'lv1cannon'} scale={0.25} rotation={3.14}/>
-            }
-            {
-                isRoomAdvanted(tableInfo) &&
-                <UICannonAdvanted x={91.5} y={65} skin={SKIN_OF_POSITION[position]} loop={true} action={'lv3cannon'} scale={0.25} rotation={3.14} />
-            }
-            {
-                isRoomMaster(tableInfo) &&
-                <UICannonMaster x={91.5} y={65} skin={SKIN_OF_POSITION[position]} loop={true} action={'lv5cannon'} scale={0.25} rotation={3.14} />
-            }
-            <CannonAmount x={58} y={16} amount={1000} />
-        </Container>
-    </Container>
-}
-
-export const CannonAmount = (props: _ReactPixi.IContainer & { amount: number }) => {
-    const { amount } = props;
-
-    return <Container {...props}>
-        <AtlasGames img="img_cannon_value_container.png" />
-        <Text x={32.5} y={14} anchor={[0.5, 0.5]} text={`${amount}`} style={{ fontSize: "15px", fill: "0xe2d8cf", stroke: "#33194d", strokeThickness: 4, fontWeight: 'bolder' }} />
     </Container>
 }
 
