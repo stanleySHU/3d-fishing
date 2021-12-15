@@ -3,20 +3,13 @@ import { Graphics as pixiGraphics, Rectangle } from 'pixi.js';
 import { Angle, Vector2 } from '@babylonjs/core';
 import { AtlasGames } from "../assets"
 import { Avatar } from '../../components/pixi/Avatar';
-import React, { PropsWithChildren, useCallback, useState } from "react";
+import React, { PropsWithChildren, useCallback, useEffect, useState } from "react";
 import { Chip } from '../../components/pixi/Chip';
 import { useContextSelector } from "use-context-selector";
-import { GameDataSourceContext } from "../../model/context/GameDataProvider";
+import { CANNON_POINT_POSITION_MAP, GameDataSourceContext } from "../../model/context/GameDataProvider";
 import { UIButton } from "../../components/pixi/Button";
 import { WebsocketService } from "../../services/websocket";
 import { Fort } from "./Fort";
-
-const CANNON_POINT_POSITION_MAP: { [key: string | number]: Vector2  } = {
-    0: new Vector2(250 + 91.5, -16 + 65),
-    1: new Vector2(576 + 91.5, -16 + 65),
-    2: new Vector2(250 + 91.5, 480 + 65),
-    3: new Vector2(576 + 91.5, 484 + 65)
-}
 
 type IInSeatUserLayerProps = {
 
@@ -31,6 +24,7 @@ export const InSeatUserLayer = React.memo((props: IInSeatUserLayerProps) => {
     const [shootAmount, setShootAmount] = useState(0);
     const [cannonRadians, setCannonRadians] = useState(0);
     const userInfo = playerState.playerInfoUserIdMap[user.id];
+    const position = userInfo ? userInfo.position : -1;
 
     function onShoot(e) {
         const { position } = userInfo;
@@ -46,10 +40,17 @@ export const InSeatUserLayer = React.memo((props: IInSeatUserLayerProps) => {
         setCannonRadians(_radians);
     }
 
+    useEffect(() => {
+        if (userInfo) {
+            const rad = (position == 0 || position == 1) ? 1.57 : -1.57;
+            setCannonRadians(rad);
+        }
+    }, [position]);
+
     return !!userInfo && <Container>
         <UIButton hitArea={new Rectangle(0, 0, 960, 540)} click={onShoot}/>
         {
-            userInfo.position == 0
+            position == 0
             &&
             (
                 <Container>
@@ -61,12 +62,12 @@ export const InSeatUserLayer = React.memo((props: IInSeatUserLayerProps) => {
                         <PlayerNameText x={86} y={34} text='stanley001' />
                         <PlayerBalanceContainer x={41} y={4} amount={0} />
                     </PlayerInfoContainer>
-                    <Fort x={250} y={-16} playerPosition={0} shootAmount={shootAmount} setShootAmount={setShootAmount} radians={cannonRadians + 3.14}/>
+                    <Fort x={250} y={-16} playerPosition={position} shootAmount={shootAmount} setShootAmount={setShootAmount} radians={cannonRadians + 1.57} newBulletId={bulletId}/>
                 </Container>
             )
         }
         {
-            userInfo.position == 1
+            position == 1
             &&
             (
                 <Container>
@@ -78,12 +79,12 @@ export const InSeatUserLayer = React.memo((props: IInSeatUserLayerProps) => {
                         <PlayerNameText x={86} y={34} text='stanley002' />
                         <PlayerBalanceContainer x={41} y={4} amount={0} />
                     </PlayerInfoContainer>
-                    <Fort x={576} y={-16} playerPosition={1} shootAmount={shootAmount} setShootAmount={setShootAmount} radians={cannonRadians + 3.14}/>
+                    <Fort x={576} y={-16} playerPosition={position} shootAmount={shootAmount} setShootAmount={setShootAmount} radians={cannonRadians + 1.57} newBulletId={bulletId}/>
                 </Container>
             )
         }
         {
-            userInfo.position == 2
+            position == 2
             &&
             (
                 <Container>
@@ -95,12 +96,12 @@ export const InSeatUserLayer = React.memo((props: IInSeatUserLayerProps) => {
                         <PlayerNameText x={86} y={10} text='stanley003' />
                         <PlayerBalanceContainer x={41} y={17} amount={0} />
                     </PlayerInfoContainer>
-                    <Fort x={250} y={484} playerPosition={2} shootAmount={shootAmount} setShootAmount={setShootAmount} radians={cannonRadians}/>
+                    <Fort x={250} y={484} playerPosition={position} shootAmount={shootAmount} setShootAmount={setShootAmount} radians={cannonRadians + 1.57} newBulletId={bulletId}/>
                 </Container>
             )
         }
         {
-            userInfo.position == 3
+            position == 3
             &&
             (
                 <Container>
@@ -112,7 +113,7 @@ export const InSeatUserLayer = React.memo((props: IInSeatUserLayerProps) => {
                         <PlayerNameText x={86} y={10} text='stanley004' />
                         <PlayerBalanceContainer x={41} y={17} amount={0} />
                     </PlayerInfoContainer>
-                    <Fort x={576} y={484} playerPosition={3} shootAmount={shootAmount} setShootAmount={setShootAmount} radians={cannonRadians}/>
+                    <Fort x={576} y={484} playerPosition={position} shootAmount={shootAmount} setShootAmount={setShootAmount} radians={cannonRadians + 1.57} newBulletId={bulletId}/>
                 </Container>
             )
         }

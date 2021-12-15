@@ -26,7 +26,8 @@ type IActionType = 'newFrames' | 'newFish' | 'newStage' | 'fireBulletBroadCast';
 export type Action = {
     type: IActionType,
     payload?: {
-        model?: any 
+        model?: any,
+        bulletStartPoint?: Vector2
     }
 };
 
@@ -72,11 +73,12 @@ export const NewFishNoticeAction = (model: NewFishNoticeModel): Action => {
     }
 }
 
-export const FireBulletBroadCastAction = (model: FireBulletBroadCastModel): Action => {
+export const FireBulletBroadCastAction = (model: FireBulletBroadCastModel, bulletStartPoint: Vector2): Action => {
     return {
         type: 'fireBulletBroadCast',
         payload: {
-            model: model
+            model: model,
+            bulletStartPoint: bulletStartPoint
         }
     }
 }
@@ -84,6 +86,7 @@ export const FireBulletBroadCastAction = (model: FireBulletBroadCastModel): Acti
 function handleNewFrames(state: InitialState, action: Action): InitialState {
     const dateTime = DateUtil.nowMillis();
 
+    //fish move
     const newFishs = [];
     state.fishs.forEach(fish => {
         const isLiveing = fish.nextFrame(dateTime);
@@ -93,6 +96,7 @@ function handleNewFrames(state: InitialState, action: Action): InitialState {
     });
     state.fishs = newFishs;
     
+    //bullet move
     state.bullets.forEach(bullet => {
         bullet.nextFrame(dateTime);
     });
@@ -110,8 +114,10 @@ function handleNewFish(state: InitialState, action: Action): InitialState {
 }
 
 function handleFireBulletBroadCast(state: InitialState, action: Action): InitialState {
-    const model: FireBulletBroadCastModel = action.payload.model, bullets = state.bullets;
-    bullets.push(new BulletModel(model, new Vector2(0, 0)));
+    const model: FireBulletBroadCastModel = action.payload.model, 
+        bulletStartPoint = action.payload.bulletStartPoint,
+        bullets = state.bullets;
+    bullets.push(new BulletModel(model, bulletStartPoint));
     state.bullets = bullets;
     return state;
 }

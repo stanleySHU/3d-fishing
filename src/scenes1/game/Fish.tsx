@@ -1,8 +1,8 @@
-import { AnimationGroup, TransformNode, Mesh } from '@babylonjs/core';
 import '@babylonjs/loaders/glTF';
-import { ContainerAssetTask } from '@babylonjs/core';
-import { useEffect, useState } from 'react';
-import { BabylonNode, FiberTransformNodeProps, FiberTransformNodePropsCtor } from 'react-babylonjs';
+import { AnimationGroup, TransformNode, Mesh, BoundingInfo, Vector3, Ray, Color3, Vector2 } from '@babylonjs/core';
+import { ContainerAssetTask, MeshBuilder } from '@babylonjs/core';
+import { useEffect, useRef, useState } from 'react';
+import { BabylonNode, FiberTransformNodeProps, FiberTransformNodePropsCtor, useScene } from 'react-babylonjs';
 import { ContainerTask, TaskType, useOverrideAssetManager } from '../../loaders/babylonjs/useAssetContainer';
 
 export type IFishProps = {
@@ -13,7 +13,7 @@ export type IFishProps = {
 
 
 export const Fish = (props: IFishProps) => {
-    const { status } = props;
+    const fishRef = useRef<Mesh>();
     const [instance, setInstance] = useState<TransformNode>(null);
     const [animationMap, setAnimationMap] = useState<{ [key: string]: AnimationGroup }>({});
 
@@ -42,6 +42,10 @@ export const Fish = (props: IFishProps) => {
 
             setInstance(entries.rootNodes[0]);
             setAnimationMap(map);
+
+            const t: Mesh = entries.rootNodes[0] as Mesh;
+            t.setBoundingInfo(new BoundingInfo(BOUNDING_INFO_FISH_ID_MAP[2019].min, BOUNDING_INFO_FISH_ID_MAP[2019].max));
+            t.showBoundingBox=true;
         }
     }, [result]);
 
@@ -51,8 +55,8 @@ export const Fish = (props: IFishProps) => {
         }
     }, [instance]);
 
-    const meshes = (result.taskNameMap[taskName] as ContainerAssetTask).loadedMeshes as Mesh[];
-    const realMeshes = [...meshes].splice(1, meshes.length - 1);
+    // const meshes = (result.taskNameMap[taskName] as ContainerAssetTask).loadedMeshes as Mesh[];
+    // const realMeshes = [...meshes].splice(1, meshes.length - 1);
     // return <transformNode {...props}>
     //         {
     //             realMeshes.map(mesh => {
@@ -60,5 +64,12 @@ export const Fish = (props: IFishProps) => {
     //             })
     //         }
     //     </transformNode>
-    return instance && <transformNode fromInstance={instance} {...props} disposeInstanceOnUnmount={true}/>;
+    return instance && <mesh ref={fishRef} fromInstance={instance} {...props} disposeInstanceOnUnmount={true} setPivotPoint={[new Vector3(2 , 0, -4)]}/>;
+}
+
+const BOUNDING_INFO_FISH_ID_MAP = {
+    2019: {
+        min: new Vector3(-5,5,-22),
+        max: new Vector3(5,15,8)
+    }
 }

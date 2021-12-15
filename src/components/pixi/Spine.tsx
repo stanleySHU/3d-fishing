@@ -1,61 +1,70 @@
-import { Container, _ReactPixi } from '@inlet/react-pixi'
-import { useAssetsManager } from '../../loaders/pixi/AssetManager';
+import { PixiComponent, applyDefaultProps, _ReactPixi, Container } from '@inlet/react-pixi'
 import { Spine } from "@pixi-spine/loader-uni";
-import { useEffect, useRef, useState } from 'react';
-import { Container as pixiContainer } from 'pixi.js' 
+import { ISkeletonData, IAnimationStateListener } from '@pixi-spine/base';
+import { useAssetsManager } from '../../loaders/pixi/AssetManager';
+import React from 'react';
 
-export type ISpineProps = {
-    atlas?: string,
-    skin: string,
+export { Spine }
+
+interface SpineMix {
+    from: string;
+    to: string;
+    duration: number;
+}
+
+type _ISpineProps = {
+    spineData?: ISkeletonData,
+    skin?: string,
     animation?: string,
-    loop: boolean,
+    loop?: boolean,
     speed?: number,
-    onComplete?: () => void
-} & _ReactPixi.IContainer;
+    mixes?: SpineMix[],
+    listener?: IAnimationStateListener
+};
 
-export const UISpine = (props: ISpineProps) => {
-    const { atlas, skin, animation, loop, speed, onComplete } = props;
-    const containerRef = useRef<pixiContainer   >();
-    const [spine, setSpine] = useState<Spine>(null);
+const _Spine = PixiComponent<_ISpineProps, Spine>("UISpine", {
+    create: ({ spineData }) => {
+        const spine = new Spine(spineData);
+        return spine;
+    },
+    applyProps: (instance, oldProps, newProps) => {
+        const {
+            mixes = [],
+            speed = 1,
+            skin,
+            animation,
+            loop = false,
+            listener,
+            ...newP
+        } = newProps;
+        applyDefaultProps(instance, oldProps, newP);
+        mixes.forEach(mix =>
+            instance.stateData.setMix(mix.from, mix.to, mix.duration)
+        )
+        instance.state.setAnimation(0, animation, loop);
+        instance.state.timeScale = speed;
+
+        instance.skeleton.setSkinByName(skin);
+        if (listener) {
+            instance.state.clearListeners();
+            instance.state.addListener(listener);
+        }
+    },
+    config: {
+        destroyChildren: false
+    }
+});
+
+export type ISpineProps = _ISpineProps & _ReactPixi.IContainer & {
+    atlas?: string
+};
+
+export const UISpine = React.forwardRef((props: ISpineProps, ref: any) => {
+    const { atlas, skin, animation, loop, speed, listener, mixes } = props;
     const resourceMap = useAssetsManager();
     const resource = resourceMap[atlas];
 
-    useEffect(() => {
-        if (containerRef.current) {
-            const obj = new Spine(resource.spineData);
-            containerRef.current.addChild(obj);
-            setSpine(obj);
-            return () => {
-
-            }
-        }
-    }, []);
-
-    useEffect(() => {
-        if (spine) {
-            spine.skeleton.setSkinByName(skin);
-        }
-    }, [skin, spine]);
-
-    useEffect(() => {
-        if (spine) {
-            spine.state.setAnimation(0, animation, loop);
-
-            const listener = {
-                complete: onComplete
-            };
-            spine.state.addListener(listener);
-            return () => {
-                spine.state.removeListener(listener);
-            }
-        }
-    }, [animation, loop, spine]);
-
-    useEffect(() => {
-        if (spine) {
-            spine.state.timeScale = speed || 1;
-        }
-    }, [speed, spine])
-
-    return <Container ref={containerRef} {...props}/>
-}
+    return <Container {...props}>
+        <_Spine ref={ref} spineData={resource.spineData} mixes={mixes} skin={skin} animation={animation} loop={loop} speed={speed} listener={listener}></_Spine>
+    </Container>
+})

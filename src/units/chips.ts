@@ -9,5 +9,5 @@ export function getBuyInCurrency(e: IP2PCurrency): IBuyInCashType {
 }
 
 export function getFCChipAmount(amount: number, mul: number = 1000): string {
-    return `${Decimal.mul(amount, mul).toPrecision(2, 0)}`;
+    return `${Decimal.mul(amount, mul).valueOf()}`;
 }

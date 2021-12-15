@@ -25,6 +25,14 @@ export class BulletModel {
         return this._radians;
     }
 
+    get x(): number {
+        return this._position.x;
+    }
+
+    get y(): number {
+        return this._position.y;
+    }
+
     constructor(model: FireBulletBroadCastModel, position: Vector2) {
         const b = model.b;
         this.playerId = b.playerId;
@@ -34,8 +42,9 @@ export class BulletModel {
         this.fishId = b.fishId;
         this.startTime = DateUtil.nowMillis();
 
-        this.speedX = Math.round(this.speed * Math.cos(this.shootAngle));
-        this.speedY = Math.round(this.speed * Math.sin(this.shootAngle));
+        const radians = Angle.FromDegrees(this.shootAngle).radians();
+        this.speedX = Math.round(this.speed * Math.cos(radians));
+        this.speedY = Math.round(this.speed * Math.sin(radians));
         this._startPosition = position;
         this.nextFrame(this.startTime);
     }
@@ -46,12 +55,14 @@ export class BulletModel {
         offsetY = this.speedY * time,
         currentX = offsetX + this._startPosition.x,
         currentY = offsetY + this._startPosition.y,
-        perX = Math.abs(currentX / 960) % 2,
-        perY = Math.abs(currentY / 540) % 2,
+        multipX = Math.abs(currentX / 960),
+        multipY = Math.abs(currentY / 540),
+        perX = multipX % 2,
+        perY = multipY % 2,
         x = Math.round(perX > 1 ? (2 - perX) * 960 : perX * 960),
         y = Math.round(perY > 1 ? (2 - perY) * 540 : perY * 540),
-        speedX = this.speedX * (perX > 1 ? -1 : 1),
-        speedY = this.speedY * (perY > 1 ? -1 : 1);
+        speedX = this.speedX * (Math.ceil(multipX) % 2 == 0 ? 1 : -1),
+        speedY = this.speedY * (Math.ceil(multipY) % 2 == 0 ? 1 : -1);
         
         this._position.set(x, y);
         this._radians = Math.atan2(speedY, speedX);

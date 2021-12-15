@@ -47,22 +47,3 @@ export const AtlasGames = (props: IAtlasImage) => {
 export const AtlasBullets = (props: IAtlasImage) => {
     return <AtlasImage {...props} atlas={ATLAS_BULLET}/>
 }
-
-export type ICannonFresherAnimation = 'lv1cannon' | 'lv1cannon_fire' | 'lv2cannon' | 'lv2cannon_fire';
-export type ICannonAdvantedAnimation = 'lv3cannon' | 'lv3cannon_fire' | 'lv4cannon' | 'lv4cannon_fire';
-export type ICannonMasterAnimation = 'lv5cannon' | 'lv5cannon_fire' | 'lv6cannon' | 'lv6cannon_fire' | 'lv6cannon_exit' | 'lv6cannon_open';
-export type ICannonAnimation = ICannonFresherAnimation | ICannonAdvantedAnimation | ICannonMasterAnimation;
-export const UICannonFresher = (props: ISpineProps & {action: ICannonFresherAnimation}) => {
-    const { action } = props;
-    return <UISpine {...props} atlas={ATLAS_CANNON_LV0} animation={action}/>
-}
-
-export const UICannonAdvanted= (props: ISpineProps & {action: ICannonAdvantedAnimation}) => {
-    const { action } = props;
-    return <UISpine {...props} atlas={ATLAS_CANNON_LV1} animation={action}/>
-}
-
-export const UICannonMaster = (props: ISpineProps & {action: ICannonMasterAnimation}) => {
-    const { action } = props;
-    return <UISpine {...props} atlas={ATLAS_CANNON_LV2} animation={action}/>
-}

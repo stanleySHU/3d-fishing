@@ -1,6 +1,6 @@
 import { BridgeProvider, useBridgeValue, useContextSelector } from 'use-context-selector';
 import { AppContext } from '../model/context/AppProvider';
-import { render, unmountComponentAtNode, } from "@inlet/react-pixi"
+import { render, unmountComponentAtNode } from "@inlet/react-pixi"
 import { PropsWithChildren, ReactElement, useEffect } from "react"
 import { ReactPixiAppContext } from "../PIXIApp";
 import { GameDataSourceContext } from '../model/context/GameDataProvider';
